@@ -1,12 +1,12 @@
 <h1>All Conditions</h1>
 
 <% @conditions.each do |condition| %>
-  <%= condition.cond_date %>
-  <%= condition.max_temperature %>
-  <%= condition.mean_temperature %>
-  <%= condition.min_temperature %>
-  <%= condition.mean_humidity %>
-  <%= condition.mean_visibility %>
-  <%= condition.mean_wind_speed %>
-  <%= condition.precipitation %>
+  <p>Date: <%= condition.cond_date %></p>
+  <p>Max Temperature: <%= condition.max_temperature %></p>
+  <p>Mean Temperature: <%= condition.mean_temperature %></p>
+  <p>Min Temperature: <%= condition.min_temperature %></p>
+  <p>Mean Humidity: <%= condition.mean_humidity %></p>
+  <p>Mean Visibility: <%= condition.mean_visibility %></p>
+  <p>Mean Wind Speed: <%= condition.mean_wind_speed %></p>
+  <p>Precipitation: <%= condition.precipitation %></p>
 <% end %>
