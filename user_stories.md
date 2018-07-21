@@ -276,7 +276,6 @@ I do not see "Logout".
 27. As a registered user and admin,
 I can modify my account data,
 I cannot modify any other user's account data.
-As a admin user
 
 
 []
