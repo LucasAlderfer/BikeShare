@@ -1,0 +1,6 @@
+<% @stations.each do |station| %>
+  <p>Name: <%= link_to station.name, station_path(slug: station.name) %></p>
+  <p>Dock Count: <%= station.dock_count %></p>
+  <p>City: <%= station.city %></p>
+  <p>Installation Date: <%= station.installation_date %></p>
+<% end %>

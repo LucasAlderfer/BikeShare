@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180721200019) do
+ActiveRecord::Schema.define(version: 20180721195000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "stations", force: :cascade do |t|
+    t.string "name"
+    t.integer "dock_count"
+    t.string "city"
+    t.date "installation_date"
+    t.integer "initial_bike_count"
+  end
 
   create_table "conditions", force: :cascade do |t|
     t.date "cond_date"
@@ -25,5 +33,4 @@ ActiveRecord::Schema.define(version: 20180721200019) do
     t.integer "mean_wind_speed"
     t.integer "precipitation"
   end
-
 end
