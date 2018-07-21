@@ -23,4 +23,14 @@ ActiveRecord::Schema.define(version: 20180721195000) do
     t.integer "initial_bike_count"
   end
 
+  create_table "conditions", force: :cascade do |t|
+    t.date "cond_date"
+    t.integer "max_temperature"
+    t.integer "mean_temperature"
+    t.integer "min_temperature"
+    t.integer "mean_humidity"
+    t.integer "mean_visibility"
+    t.integer "mean_wind_speed"
+    t.integer "precipitation"
+  end
 end
