@@ -7,7 +7,7 @@ describe ' as a visitor' do
       station_2 = Station.create(name: 'goodbye', dock_count:3, city:'Boulder', installation_date:'8/8/2010', initial_bike_count:3)
 
       visit stations_path
-
+      
       expect(page).to have_content "Name: #{station_1.name}"
       expect(page).to have_content "Name: #{station_2.name}"
       expect(page).to have_content "City: #{station_1.city}"
