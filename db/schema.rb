@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180722173443) do
     t.string "description"
     t.integer "price"
     t.integer "status"
-    t.binary "image"
+    t.string "image"
   end
 
   create_table "conditions", force: :cascade do |t|

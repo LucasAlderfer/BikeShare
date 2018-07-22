@@ -5,7 +5,7 @@ class CreateAccessories < ActiveRecord::Migration[5.1]
       t.string :description
       t.integer :price
       t.integer :status
-      t.binary :image
+      t.string :image
     end
   end
 end
