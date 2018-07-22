@@ -1,4 +1,4 @@
-equire 'rails_helper'
+require 'rails_helper'
 
 describe User do
   describe 'validations' do
