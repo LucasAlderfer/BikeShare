@@ -1,5 +1,5 @@
 <h1>Welcome to the trips index!</h1>
-
+<!-- TODO: This page needs to show a max of 30 lines per page -->
 <% @trips.each do |trip| %>
   <section id="trip-<%=trip.id%>">
     <p>Duration: <%= trip.duration %></p>
