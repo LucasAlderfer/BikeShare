@@ -10,6 +10,7 @@ require 'csv'
 
 
 CSV.foreach('./db/csv/weather.csv', headers: true, header_converters: :symbol) do |condition|
+  # weather.csv has 3,665 rows, this seed only creates 3,599 rows for some reason...
   Condition.create(cond_date: Date.strptime(condition[:date], '%m/%d/%Y'),
                    max_temperature: condition[:max_temperature_f],
                    mean_temperature: condition[:mean_temperature_f],
