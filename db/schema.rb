@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 20180722215842) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accessories", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "price"
+    t.integer "status"
+    t.string "image"
+  end
+
   create_table "conditions", force: :cascade do |t|
     t.date "cond_date"
     t.integer "max_temperature"
@@ -42,7 +50,7 @@ ActiveRecord::Schema.define(version: 20180722215842) do
     t.string "end_station"
     t.bigint "bike_id"
     t.string "subscription_type"
-    t.bigint "zip_code"
+    t.integer "zip_code"
   end
 
 end
