@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'as a visitor' do
   context 'visits /trips/:id' do
     it 'sees trip information' do
-      trip_1 = Trip.create!(duration:8, start_date:'8/8/2010 14:13', start_station: 'hello', end_date: '8/9/2010 14:13', end_station: 'goodbye', bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_1 = Trip.create!(duration:8, start_date:'8/8/2010 14:13', start_station: 2, end_date: '8/9/2010 14:13', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
 
       visit trip_path(trip_1)
 

@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 20180722215842) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accessories", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "price"
+    t.integer "status"
+    t.string "image"
+  end
+
   create_table "conditions", force: :cascade do |t|
     t.date "cond_date"
     t.integer "max_temperature"
@@ -34,22 +42,22 @@ ActiveRecord::Schema.define(version: 20180722215842) do
     t.integer "initial_bike_count"
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.bigint "duration"
+    t.datetime "start_date"
+    t.string "start_station"
+    t.datetime "end_date"
+    t.string "end_station"
+    t.bigint "bike_id"
+    t.string "subscription_type"
+    t.integer "zip_code"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "trips", force: :cascade do |t|
-    t.integer "duration"
-    t.datetime "start_date"
-    t.string "start_station"
-    t.datetime "end_date"
-    t.string "end_station"
-    t.integer "bike_id"
-    t.string "subscription_type"
-    t.integer "zip_code"
   end
 
 end

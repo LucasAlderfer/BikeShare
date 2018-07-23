@@ -30,4 +30,17 @@ CSV.foreach('./db/csv/station.csv', headers: true, header_converters: :symbol) d
                 )
 end
 
+CSV.foreach('./db/csv/trip.csv', headers: true, header_converters: :symbol) do |trip|
+  Trip.create(duration: trip[:duration],
+              start_date: DateTime.strptime(trip[:start_date], '%m/%d/%Y'),
+              start_station: trip[:start_station_id],
+              end_date: DateTime.strptime(trip[:end_date], '%m/%d/%Y'),
+              end_station: trip[:end_station_id],
+              bike_id: trip[:bike_id],
+              subscription_type: trip[:subscription_type],
+              zip_code: trip[:zip_code]
+            )
+end
+
+
 ActiveRecord::Base.connection.reset_pk_sequence!('stations')
