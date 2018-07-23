@@ -11,4 +11,8 @@ describe Trip do
     it {should validate_presence_of(:subscription_type)}
     it {should validate_presence_of(:zip_code)}
   end
+  describe 'relationships' do
+    it {should respond_to(:start_station)}
+    it {should respond_to(:end_station)}
+  end
 end
