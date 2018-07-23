@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20180722215842) do
     t.string "end_station"
     t.bigint "bike_id"
     t.string "subscription_type"
-    t.integer "zip_code"
+    t.bigint "zip_code"
   end
 
   create_table "users", force: :cascade do |t|
