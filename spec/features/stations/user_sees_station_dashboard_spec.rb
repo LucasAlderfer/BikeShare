@@ -9,7 +9,7 @@ describe 'visitor sees station dashboard' do
 
     visit '/stations-dashboard'
 
-    expect(page).to have_content("Station total count: 4")#total count of stations
+    expect(page).to have_content("Total station count: 4")#total count of stations
     expect(page).to have_content("Average number of docks: 5")#avgnumber bikes per station
     expect(page).to have_content("Max number of Docks: #{station_4.dock_count} #{station_4.name}")#maxnumber bikes available, maxnumber bikes station
     expect(page).to have_content("Min number of Docks: #{station_1.dock_count} #{station_1.name}")#minnumber bikes available, minnumber bikes station
