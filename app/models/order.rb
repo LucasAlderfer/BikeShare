@@ -7,4 +7,13 @@ class Order < ApplicationRecord
   has_many :accessories, through: :order_accessories
 
   enum status: ['ordered', 'completed', 'paid', 'cancelled']
+
+  def total
+    tot = []
+    order_accessories.each do |ord_acc|
+      tot << ord_acc.subtotal
+    end
+    tot.sum
+  end
+
 end
