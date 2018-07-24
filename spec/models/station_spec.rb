@@ -14,7 +14,7 @@ describe Station do
       station_3 = Station.create(name: 'wilma', dock_count:6, city:'Aurora', installation_date:'8/9/2010', initial_bike_count:7)
       station_4 = Station.create(name: 'bob', dock_count:8, city:'Golden', installation_date:'8/10/2010', initial_bike_count:9)
 
-      expect(Station.count).to eq(4)
+      expect(Station.stations_count).to eq(4)
       expect(Station.avg_docks).to eq(5)
       expect(Station.max_bikes).to eq(station_4)
       expect(Station.min_bikes).to eq(station_1)
