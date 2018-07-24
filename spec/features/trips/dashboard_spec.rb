@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Visiting the trips dashboard' do
   context 'as a registered user' do
-    it 'sees the average duration of a ride' do
+    xit 'sees the average duration of a ride' do
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station: 2, end_date: '8/10/2010', end_station: 2, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station: 2, end_date: '8/11/2010', end_station: 2, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -13,7 +13,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Average Duration: #{avg_duration}")
     end
-    it 'sees the longest ride' do
+    xit 'sees the longest ride' do
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station: 2, end_date: '8/10/2010', end_station: 2, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station: 2, end_date: '8/11/2010', end_station: 2, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -24,7 +24,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Longest Ride: #{longest_ride}")
     end
-    it 'sees the shortest ride' do
+    xit 'sees the shortest ride' do
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station: 2, end_date: '8/10/2010', end_station: 2, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station: 2, end_date: '8/11/2010', end_station: 2, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -35,7 +35,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Shortest Ride: #{shortest_ride}")
     end
-    it 'sees the Station with the most rides as a starting place' do
+    xit 'sees the Station with the most rides as a starting place' do
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station: 2, end_date: '8/10/2010', end_station: 2, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station: 2, end_date: '8/11/2010', end_station: 2, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -47,7 +47,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Station Most Frequently Started At: #{most_per_starting_place}")
     end
-    it 'sees the Station with the most rides as an ending place' do
+    xit 'sees the Station with the most rides as an ending place' do
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -59,7 +59,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Station Most Frequently Ended At: #{most_per_ending_place}")
     end
-    it 'sees Month by Month breakdown of number of rides with subtotals for each year' do
+    xit 'sees Month by Month breakdown of number of rides with subtotals for each year' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/2/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/3/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -89,7 +89,7 @@ describe 'Visiting the trips dashboard' do
       expect(page).to have_content("December 2010: 1")
       expect(page).to have_content("2010 Ride Total: 12")
     end
-    it 'sees the Most ridden bike with total number of rides for that bike' do
+    xit 'sees the Most ridden bike with total number of rides for that bike' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/2/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/3/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -103,7 +103,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Most Ridden Bike: #{most_ridden_bike}")
     end
-    it 'sees the Least ridden bike with total number of rides for that bike' do
+    xit 'sees the Least ridden bike with total number of rides for that bike' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/2/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/3/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -117,7 +117,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Least Ridden Bike: #{least_ridden_bike}")
     end
-    it 'sees the User subscription type breakout with both count and percentage' do
+    xit 'sees the User subscription type breakout with both count and percentage' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/2/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/3/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -136,7 +136,7 @@ describe 'Visiting the trips dashboard' do
       expect(page).to have_content("Customer Count: #{cust_count}")
       expect(page).to have_content("Customer Percentage: #{cust_percent}")
     end
-    it 'sees the Single date with the highest number of trips with a count of those trips' do
+    xit 'sees the Single date with the highest number of trips with a count of those trips' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/1/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/1/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -152,7 +152,7 @@ describe 'Visiting the trips dashboard' do
       expect(page).to have_content("Date With Largest Number of Trips: #{date_of_most_trips}")
       expect(page).to have_content("Count of Most Trips in One Day: #{count_of_most_trips_in_one_day}")
     end
-    it 'sees the Single date with the lowest number of trips with a count of those trips' do
+    xit 'sees the Single date with the lowest number of trips with a count of those trips' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/1/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/1/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
