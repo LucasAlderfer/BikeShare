@@ -4,3 +4,7 @@
   <% end %>
 <p>Logout</p>
 </nav>
+
+<% current_user.orders.each do |order| %>
+  <p><%= link_to "Order #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
+<% end %>
