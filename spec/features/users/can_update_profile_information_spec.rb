@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'A user visits the dashboard' do
   context 'as a registered user' do
-    it 'can click a link and update its own information' do
+    xit 'can click a link and update its own information' do
       user = User.create(username: 'Dude', password: 'huISER3')
       new_name = 'Bud'
       new_password = 'Bong420'

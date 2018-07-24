@@ -3,11 +3,12 @@ require 'rails_helper'
 describe 'A user visits bike shop' do
   describe 'it sees a list of items' do
     it 'can add individual accessories to a shopping cart' do
-      part_1 = Accessories.create(title: 'thing1', :description: 'kjhs', price: 4, status: 1, image: 'hjtkhtjk')
+      part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 1, image: 'hjtkhtjk')
+      part_2 = Accessory.create(title: 'thing2', description: 'kjhgt6s', price: 6, status: 1, image: 'IIIII')
 
       visit '/bike-shop'
 
-      within '.accessory' do
+      within "#accessory-#{part_1.id}" do
         click_on 'Add to Cart'
       end
 

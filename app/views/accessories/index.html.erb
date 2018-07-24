@@ -1,0 +1,6 @@
+<% @accessories.each do |accessory| %>
+  <section id='accessory-<%= accessory.id %>'>
+    <%= accessory.title %>
+    <%= button_to "Add to Cart", carts_path(accessory_id: accessory.id) %>
+  </section>
+<% end %>

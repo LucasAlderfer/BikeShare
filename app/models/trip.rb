@@ -8,6 +8,10 @@ class Trip < ApplicationRecord
                         :subscription_type,
                         :zip_code
 
+
+  belongs_to :start_station, :class_name => 'Station'
+  belongs_to :end_station, :class_name => 'Station'
+  
   def self.average_duration
     average(:duration)
   end
@@ -70,4 +74,5 @@ class Trip < ApplicationRecord
   def self.least_trips_in_one_day_count
     group("date_trunc('day', start_date)").order('count_all').count.first[1]
   end
+
 end

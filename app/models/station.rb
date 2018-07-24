@@ -1,5 +1,4 @@
 class Station < ApplicationRecord
-  # removed initial_bike_count for seeding purposes - wasn't tested anyways (ANGRY GLARE!!!)
   validates_presence_of :name, :city, :dock_count, :installation_date
 
   def self.stations_count
@@ -25,4 +24,8 @@ class Station < ApplicationRecord
   def self.oldest
     order('installation_date DESC').first
   end
+
+  has_many :trips_from, :class_name => "Trip", :foreign_key => 'start_station_id'
+  has_many :trips_to, :class_name => "Trip", :foreign_key => 'end_station_id'
+
 end

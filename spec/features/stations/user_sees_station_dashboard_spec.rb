@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe 'visitor sees station dashboard' do
   it 'sees all dashboard info' do
-    station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010', initial_bike_count:2)
-    station_2 = Station.create(name: 'fred', dock_count:4, city:'Arvada', installation_date:'8/8/2010', initial_bike_count:3)
-    station_3 = Station.create(name: 'wilma', dock_count:6, city:'Aurora', installation_date:'8/9/2010', initial_bike_count:7)
-    station_4 = Station.create(name: 'bob', dock_count:8, city:'Golden', installation_date:'8/10/2010', initial_bike_count:9)
+    station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
+    station_2 = Station.create(name: 'fred', dock_count:4, city:'Arvada', installation_date:'8/8/2010')
+    station_3 = Station.create(name: 'wilma', dock_count:6, city:'Aurora', installation_date:'8/9/2010')
+    station_4 = Station.create(name: 'bob', dock_count:8, city:'Golden', installation_date:'8/10/2010')
 
     visit '/stations-dashboard'
 

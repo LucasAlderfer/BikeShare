@@ -1,5 +1,23 @@
 class SessionsController < ApplicationController
-  def index
-    
+
+  def new
+
   end
+
+  def index
+
+  end
+
+  def create
+    user = User.find_by_username(params[:username])
+    if user && user.authenticate(params[:password])
+      # TODO: success flash message
+      session[:user_id] = user.id
+      redirect_to dashboard_path
+    else
+      # TODO: error flash message
+      render :new
+    end
+  end
+
 end

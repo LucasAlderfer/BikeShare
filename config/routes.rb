@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get '/login', to: 'sessions#index'
+  get '/login', to: 'sessions#new'
+
+  post '/login', to: 'sessions#create'
 
   get '/dashboard', to: 'dashboard#index'
 
@@ -11,9 +13,11 @@ Rails.application.routes.draw do
 
   get '/stations-dashboard', to: 'stations#dashboard'
 
-  resources :users, only: [:new, :create]
+  get '/bike-shop', to: 'accessories#index'
 
-  resources :users, only: [:new, :create] do
+
+  resources :users, only: [:new, :create, :show] do
+
     resources :orders, only: [:show]
   end
 
@@ -23,4 +27,7 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
+  resources :carts, only: [:create]
+
+  resources :accessories, only: [:index]
 end
