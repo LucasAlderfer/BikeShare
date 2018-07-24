@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'User' do
-  xit context 'visits order show page' do
+describe 'User visits order show page' do
+  it 'sees individual order show info' do
     user = User.create(username: "asdf", password: "asdf")
     order_1 = user.orders.create(status: "Paid")
     order_2 = user.orders.create(status: "Cancelled")
