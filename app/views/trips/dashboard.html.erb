@@ -11,3 +11,9 @@
 
 <p>Date With Largest Number of Trips: <%= @trips.date_with_most_trips %></p>
 <p>Count of Most Trips in One Day: <%= @trips.most_trips_in_one_day_count %></p>
+<p>Date With Lowest Number of Trips: <%= @trips.date_with_least_trips %></p>
+<p>Count of Least Trips in One Day: <%= @trips.least_trips_in_one_day_count %></p>
+<% @trips.number_of_rides_per_month.each do |date, value| %>
+  <%= date.strftime("%B %Y") %>: <%= value %>
+<% end %>
+<p><%= @trips.total_trips_per_year.keys.first.year %> Ride Total: <%= @trips.total_trips_per_year.values.first %></p>

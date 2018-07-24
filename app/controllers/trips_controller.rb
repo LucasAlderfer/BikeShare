@@ -9,6 +9,7 @@ class TripsController < ApplicationController
   end
 
   def dashboard
+    #TODO move methods out of view
     @trips = Trip.all
   end
 

@@ -40,11 +40,11 @@ class Trip < ApplicationRecord
   end
 
   def self.subscriber_count
-    group(:subscription_type).count(:subscription_type)["Subscriber"]
+    where(subscription_type:'Subscriber').count
   end
 
   def self.customer_count
-    group(:subscription_type).count(:subscription_type)["Customer"]
+    where(subscription_type:'Customer').count
   end
 
   def self.subscriber_percent
@@ -64,10 +64,10 @@ class Trip < ApplicationRecord
   end
 
   def self.date_with_least_trips
-    group("date_trunc('day', start_date)").order('count_all desc').count.last[0]
+    group("date_trunc('day', start_date)").order('count_all').count.first[0]
   end
 
   def self.least_trips_in_one_day_count
-    group("date_trunc('day', start_date)").order('count_all desc').count.last[1]
+    group("date_trunc('day', start_date)").order('count_all').count.first[1]
   end
 end

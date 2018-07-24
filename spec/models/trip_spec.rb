@@ -52,6 +52,7 @@ describe Trip do
       expect(Trip.station_end_max).to eq(1)
     end
     xit 'calculates Month by Month breakdown of number of rides with subtotals for each year' do
+      #TODO
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/2/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/3/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -65,7 +66,7 @@ describe Trip do
       trip_11 = Trip.create!(duration:10, start_date:'8/11/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
       trip_12 = Trip.create!(duration:5, start_date:'8/12/2010', start_station: 2, end_date: '8/11/2010', end_station: 2, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
 
-      expect(Trip.number_of_rides_per_month).to eq({ 1 => 1, 2 => 1, 3 => 1, 4 => 1, 5 => 1, 6 => 1, 7 => 1, 8 => 1, 9 => 1, 10 => 1, 11 => 1, 12 => 1 })
+      expect(Trip.number_of_rides_per_month).to eq({ '2010-01-01 00:00:00.000000000 +0000' => 1, '2010-02-01 00:00:00.000000000 +0000' => 1, '2010-03-01 00:00:00.000000000 +0000' => 1, '2010-04-01 00:00:00.000000000 +0000' => 1, '2010-05-01 00:00:00.000000000 +0000' => 1, '2010-06-01 00:00:00.000000000 +0000' => 1, '2010-07-01 00:00:00.000000000 +0000' => 1, '2010-08-01 00:00:00.000000000 +0000' => 1, '2010-09-01 00:00:00.000000000 +0000' => 1, '2010-10-01 00:00:00.000000000 +0000' => 1, '2010-11-01 00:00:00.000000000 +0000' => 1, '2010-12-01 00:00:00.000000000 +0000' => 1 })
       expect(Trip.total_trips_per_year).to eq({ 2010 => 12 })
     end
     it 'calculates the Most ridden bike with total number of rides for that bike' do
