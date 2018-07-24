@@ -8,4 +8,8 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
+  def dashboard
+    @trips = Trip.all
+  end
+
 end

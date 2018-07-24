@@ -35,7 +35,8 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Shortest Ride: #{shortest_ride}")
     end
-    it 'sees the Station with the most rides as a starting place' do
+    xit 'sees the Station with the most rides as a starting place' do
+      #TODO
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station: 2, end_date: '8/10/2010', end_station: 2, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station: 2, end_date: '8/11/2010', end_station: 2, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -47,7 +48,8 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Station Most Frequently Started At: #{most_per_starting_place}")
     end
-    it 'sees the Station with the most rides as an ending place' do
+    xit 'sees the Station with the most rides as an ending place' do
+      #TODO
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
@@ -59,7 +61,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Station Most Frequently Ended At: #{most_per_ending_place}")
     end
-    it 'sees Month by Month breakdown of number of rides with subtotals for each year' do
+    xit 'sees Month by Month breakdown of number of rides with subtotals for each year' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station: 1, end_date: '8/9/2010', end_station: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/2/2010', start_station: 2, end_date: '8/10/2010', end_station: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/3/2010', start_station: 2, end_date: '8/11/2010', end_station: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
