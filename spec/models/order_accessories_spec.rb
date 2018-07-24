@@ -7,7 +7,7 @@ describe OrderAccessories do
     it {should validate_presence_of(:quantity)}
   end
   describe 'Relationships' do
-    it {should belong_to(:orders)}
-    it {should belong_to(:accessories)}
+    it {should belong_to(:order)}
+    it {should belong_to(:accessory)}
   end
 end
