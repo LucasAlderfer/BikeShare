@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe OrderAccessories do
+describe OrderAccessory do
   describe 'validations' do
     it {should validate_presence_of(:order_id)}
     it {should validate_presence_of(:accessory_id)}
