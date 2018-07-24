@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'dashboard#index'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resources :orders, only: [:show]
+  end
 
   resources :stations, param: :slug
 
