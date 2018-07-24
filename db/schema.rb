@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180724000549) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20180724000549) do
     t.string "end_station"
     t.bigint "bike_id"
     t.string "subscription_type"
-    t.integer "zip_code"
+    t.bigint "zip_code"
   end
 
   create_table "users", force: :cascade do |t|
