@@ -5,7 +5,7 @@ describe 'User visits order show page' do
     user = User.create(username: "asdf", password: "asdf")
     acc1 = Accessory.create(title: 'bike thing', description: 'does things', price: 2, status: 'Active', image: 'pic.jpg')
     acc2 = Accessory.create(title: 'other thing', description: 'does others', price: 4, status: 'Active', image: 'img.jpg')
-    order_1 = user.orders.create(status: 2)
+    order_1 = user.orders.create(status: 1)
     order_2 = user.orders.create(status: 3)
     order_1.order_accessories.create(quantity: 2, accessory_id: acc1.id)
     order_1.order_accessories.create(quantity: 1, accessory_id: acc2.id)
@@ -18,6 +18,7 @@ describe 'User visits order show page' do
     expect(page).to have_content(order_2.id)
 
     click_on("Order #{order_1.id} - #{order_1.status}")
+    save_and_open_page
 
     expect(current_path).to eq(user_order_path(user, order_1))
     expect(page).to have_content(order_1.status)
@@ -30,6 +31,6 @@ describe 'User visits order show page' do
     expect(page).to have_content('Subtotal: 4')
     expect(page).to have_content('Total: 8')
     expect(page).to have_content("Submitted: #{order_1.created_at}")
-    expect(page).to have_content("#{order_1.status}: #{order_1.updated_at}")
+    expect(page).to have_content("Status updated: #{order_1.updated_at}")
   end
 end
