@@ -13,3 +13,4 @@ describe Accessory do
     xit {should have_many(:order_accessories)}
     xit {should have_many(:orders).through(:order_accessories)}
   end
+end

@@ -15,7 +15,7 @@ describe 'visiting /' do
       expect(page).to have_content "The page you were looking for doesn't exist"
       # expect(page).to have_link "Log In" commented out until nav is working
     end
-    # skipped until cart page is up
+    # TODO: skipped until cart page is up
     xit 'cannot checkout without logging in' do
 
       visit cart_path
@@ -65,7 +65,7 @@ describe 'visiting /' do
       expect(page).to have_content "The page you were looking for doesn't exist"
       # expect(page).to have_content "Username: #{user_1.username}" commenting out until nav is complete
       # visit admin_trip_new_path # this path doesn't even exist yet...
-      
+
       # expect(current_path).to eq dashboard_path # I don't agree with this path as part of the test
       expect(page).to have_content "The page you were looking for doesn't exist"
     end
