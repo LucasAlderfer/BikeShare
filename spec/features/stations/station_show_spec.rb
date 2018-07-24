@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'as a visitor' do
   context 'visits /station/:id' do
     it 'sees station show page' do
-      station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010', initial_bike_count:2)
+      station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
 
       visit stations_path
 

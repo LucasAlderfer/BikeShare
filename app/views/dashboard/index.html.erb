@@ -1,4 +1,6 @@
 <nav>
-<p>Logged in as <%= current_user.username %></p>
+  <% if current_user %>
+    <p>Logged in as <%= current_user.username %></p>
+  <% end %>
 <p>Logout</p>
 </nav>
