@@ -18,7 +18,6 @@ describe 'User visits order show page' do
     expect(page).to have_content(order_2.id)
 
     click_on("Order #{order_1.id} - #{order_1.status}")
-    save_and_open_page
 
     expect(current_path).to eq(user_order_path(user, order_1))
     expect(page).to have_content(order_1.status)
