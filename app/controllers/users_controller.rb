@@ -13,9 +13,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    if session[:user_id] == params[:id]
+      @user = User.find(current_user.id)
+    else
+      render file: "/public/404"
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:username, :password)
   end
+
+  def require_user
+    render file: "/public/404" unless current_user?
+  end
+
 end
