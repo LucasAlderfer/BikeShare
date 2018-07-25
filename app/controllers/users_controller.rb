@@ -13,6 +13,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.save
+      @current_user = @user
+      flash[:success] = "You successfully updated your account!"
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
+  end
+
   def show
     if session[:user_id] == params[:id]
       @user = User.find(current_user.id)

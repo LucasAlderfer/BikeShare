@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'A user visits the root page' do
   context 'not as a registered user' do
-    xit 'can log in but there is no log out' do
+    it 'can log in but there is no log out' do
       visit root_path
 
       expect(page).to have_content('Login')
@@ -10,10 +10,16 @@ describe 'A user visits the root page' do
     end
   end
   context 'as a registered user' do
-    xit 'can logout from root and see Login but not Logout' do
+    it 'can logout from root and see Login but not Logout' do
       user = User.create(username: 'Dude', password: 'huISER3')
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      visit root_path
+
+      click_on "Login"
+
+      fill_in :username, with: 'Dude'
+      fill_in :password, with: 'huISER3'
+      click_on 'Login'
 
       visit root_path
 

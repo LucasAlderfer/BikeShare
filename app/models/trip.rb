@@ -11,7 +11,7 @@ class Trip < ApplicationRecord
 
   belongs_to :start_station, :class_name => 'Station'
   belongs_to :end_station, :class_name => 'Station'
-  
+
   def self.average_duration
     average(:duration)
   end
@@ -25,6 +25,11 @@ class Trip < ApplicationRecord
   end
 
   def self.station_start_max
+    select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from desc').limit(1).first.start_station_id
+  end
+
+  def self.station_end_max
+    select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from').limit(1).first.start_station_id
   end
 
   def self.number_of_rides_per_month

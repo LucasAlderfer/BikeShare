@@ -10,7 +10,7 @@ describe Accessory do
   end
   describe 'relationships' do
     #TODO
-    xit {should have_many(:order_accessories)}
-    xit {should have_many(:orders).through(:order_accessories)}
+    it {should have_many(:order_accessories)}
+    it {should have_many(:orders).through(:order_accessories)}
   end
 end
