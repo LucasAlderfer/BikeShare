@@ -39,8 +39,7 @@ describe 'Visiting the trips dashboard' do
 
       expect(page).to have_content("Shortest Ride: #{shortest_ride}")
     end
-    xit 'sees the Station with the most rides as a starting place' do
-      #TODO
+    it 'sees the Station with the most rides as a starting place' do
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 2, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
       trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station_id: 2, end_date: '8/11/2010', end_station_id: 2, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
