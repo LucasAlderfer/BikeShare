@@ -1,9 +1,13 @@
-<% @cart_items.each do |item| %>
-<%= image_tag(item.image, size: "50x50") %>
-<p>Title:<%= item.title %></p>
-<p>Price:<%= item.price %></p>
-<p>Quantity: <%= @cart.accessory_quantity(item.id) %></p>
-<p>Subtotal: <%= @cart.subtotal(item.id) %></p>
-<br>
-<% end %>
-<p>Total: <%= @cart.total %></p>
+<div class="cart">
+  <% @cart_items.each do |item| %>
+    <div id="accessory-<%= item.id %>" >
+      <%= image_tag(item.image, size: "50x50") %>
+      <p>Title:<%= item.title %></p>
+      <p>Price:<%= item.price %></p>
+      <p>Quantity: <%= @cart.accessory_quantity(item.id) %></p>
+      <p>Subtotal: <%= @cart.subtotal(item.id) %></p>
+      <%= link_to "Remove", cart_path(id: item.id), method: 'delete' %><br>
+    </div>
+  <% end %>
+  <p>Total: <%= @cart.total %></p>
+</div>
