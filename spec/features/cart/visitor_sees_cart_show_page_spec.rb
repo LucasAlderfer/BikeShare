@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'visitor sees cart show page' do
-  xit 'sees all accessories visitor has added to cart' do
-    part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'hjtkhtjk')
-    part_2 = Accessory.create(title: 'thing2', description: 'kjhgt6s', price: 6, status: 0, image: 'IIIII')
+  it 'sees all accessories visitor has added to cart' do
+    part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'http://placekitten/200/200')
+    part_2 = Accessory.create(title: 'thing2', description: 'kjhgt6s', price: 6, status: 0, image: 'http://placekitten/200/200')
     quantity1 = 1
     quantity2 = 1
     subtotal1 = 4
@@ -22,12 +22,10 @@ describe 'visitor sees cart show page' do
 
     visit cart_path
 
-    expect(page).to have_content(part_1.image)#thumbnail size
     expect(page).to have_content(part_1.title)
     expect(page).to have_content(part_1.price)
     expect(page).to have_content(quantity1)
     expect(page).to have_content(subtotal1)#this is fine here but should be an actual method for the page
-    expect(page).to have_content(part_2.image)#thumbnail size
     expect(page).to have_content(part_2.title)
     expect(page).to have_content(part_2.price)
     expect(page).to have_content(quantity2)
@@ -48,12 +46,10 @@ describe 'visitor sees cart show page' do
 
     visit cart_path
 
-    expect(page).to have_content(part_1.image)#thumbnail size
     expect(page).to have_content(part_1.title)
     expect(page).to have_content(part_1.price)
     expect(page).to have_content(quantity1)
     expect(page).to have_content(subtotal1)#this is fine here but should be an actual method for the page
-    expect(page).to have_content(part_2.image)#thumbnail size
     expect(page).to have_content(part_2.title)
     expect(page).to have_content(part_2.price)
     expect(page).to have_content(quantity2)
