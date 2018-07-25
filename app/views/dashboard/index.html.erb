@@ -5,6 +5,11 @@
 <p>Logout</p>
 </nav>
 
+<% if current_user %>
+  <%= link_to "Edit Profile", edit_user_path(current_user) %>
+<% end %>
+
+
 <% current_user.orders.each do |order| %>
   <p><%= link_to "Order #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
 <% end %>
