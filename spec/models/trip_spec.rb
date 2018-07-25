@@ -140,5 +140,46 @@ describe Trip do
       expect(Trip.date_with_least_trips).to eq('8/9/2010')
       expect(Trip.least_trips_in_one_day_count).to eq(2)
     end
+    it 'calculated the highest number of rides during each 10 degree chunk' do
+      condition_1 = Condition.create(cond_date: '8/9/2010', max_temperature: 96, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 5, mean_wind_speed: 3, precipitation: 0.2)
+      condition_2 = Condition.create(cond_date: '8/10/2010', max_temperature: 86, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 2, mean_wind_speed: 6, precipitation: 0.6)
+      condition_3 = Condition.create(cond_date: '8/11/2010', max_temperature: 96, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 5, mean_wind_speed: 3, precipitation: 0.2)
+      condition_4 = Condition.create(cond_date: '8/12/2010', max_temperature: 86, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 2, mean_wind_speed: 6, precipitation: 0.6)
+
+      station_1 = Station.create(name: 'hello', dock_count: 2, city:'Denver', installation_date:'8/7/2010')
+      station_2 = Station.create(name: 'world', dock_count: 3, city:'Chicago', installation_date:'8/7/2010')
+
+      trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_2 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_3 = Trip.create!(duration:8, start_date:'8/10/2010', start_station_id: 1, end_date: '8/10/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_4 = Trip.create!(duration:8, start_date:'8/11/2010', start_station_id: 1, end_date: '8/11/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_5 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_6 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+
+      expect(Trip.highest_rides_per_temp(90..99)).to eq(2)
+      expect(Trip.highest_rides_per_temp(80..89)).to eq(2)
+      expect(Trip.average_rides_per_temp(90..99)).to eq(1.5)
+      expect(Trip.average_rides_per_temp(80..89)).to eq(1.5)
+      expect(Trip.lowest_rides_per_temp(90..99)).to eq(1)
+      expect(Trip.lowest_rides_per_temp(80..89)).to eq(1)
+      expect(Trip.highest_rides_per_precipitation(0..0.49)).to eq 2
+      expect(Trip.highest_rides_per_precipitation(0.50..0.99)).to eq 2
+      expect(Trip.average_rides_per_precipitation(0..0.49)).to eq 1.5
+      expect(Trip.average_rides_per_precipitation(0.50..0.99)).to eq 1.5
+      expect(Trip.lowest_rides_per_precipitation(0..0.49)).to eq 1
+      expect(Trip.lowest_rides_per_precipitation(0.50..0.99)).to eq 1
+      expect(Trip.highest_rides_per_wind_speed(0..4)).to eq 2
+      expect(Trip.highest_rides_per_wind_speed(4..8)).to eq 2
+      expect(Trip.average_rides_per_wind_speed(0..4)).to eq 1.5
+      expect(Trip.average_rides_per_wind_speed(4..8)).to eq 1.5
+      expect(Trip.lowest_rides_per_wind_speed(0..4)).to eq 1
+      expect(Trip.lowest_rides_per_wind_speed(4..8)).to eq 1
+      expect(Trip.highest_rides_per_mean_visibility(0..3.9)).to eq 2
+      expect(Trip.highest_rides_per_mean_visibility(4..7.9)).to eq 2
+      expect(Trip.average_rides_per_mean_visibility(0..3.9)).to eq 1.5
+      expect(Trip.average_rides_per_mean_visibility(4..7.9)).to eq 1.5
+      expect(Trip.lowest_rides_per_mean_visibility(0..3.9)).to eq 1
+      expect(Trip.lowest_rides_per_mean_visibility(4..7.9)).to eq 1
+    end
   end
 end
