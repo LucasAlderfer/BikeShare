@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/bike-shop', to: 'accessories#index'
 
+  get '/cart', to: 'carts#index'
 
   resources :users, only: [:new, :create, :show, :update, :edit] do
 

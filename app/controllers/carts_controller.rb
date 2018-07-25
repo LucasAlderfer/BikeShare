@@ -9,4 +9,9 @@ class CartsController < ApplicationController
     flash[:notice] = "You have added #{accessory.title} to your cart."
     redirect_to accessories_path
   end
+
+  def index
+    accessory_ids = @cart.accessory_ids
+    @cart_items = Accessory.find(accessory_ids)
+  end
 end
