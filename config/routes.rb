@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
 
   post '/login', to: 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
 
   get '/dashboard', to: 'dashboard#index'
 
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   get '/bike-shop', to: 'accessories#index'
 
 
-  resources :users, only: [:new, :create, :show] do
+  resources :users, only: [:new, :create, :show, :update, :edit] do
 
     resources :orders, only: [:show]
   end

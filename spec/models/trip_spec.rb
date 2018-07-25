@@ -59,8 +59,7 @@ describe Trip do
       expect(Trip.station_start_max).to eq(2)
       expect(Trip.station_start_max).to eq(2)
     end
-    xit 'calculates the Station with the most rides as an ending place' do
-      #TODO
+    it 'calculates the Station with the most rides as an ending place' do
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_1 = Trip.create!(duration:8, start_date:'8/8/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)

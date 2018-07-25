@@ -28,6 +28,10 @@ class Trip < ApplicationRecord
     select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from desc').limit(1).first.start_station_id
   end
 
+  def self.station_end_max
+    select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from').limit(1).first.start_station_id
+  end
+
   def self.number_of_rides_per_month
     group("date_trunc('month', start_date)").order('count_all desc').count
   end
