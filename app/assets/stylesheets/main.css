@@ -1,0 +1,25 @@
+body {
+  display: grid;
+  grid-template-rows: auto auto;
+  background-color: #00E4FF
+}
+
+nav {
+  background-color: #00B7CC;
+  text-align: center;
+}
+
+nav h2 {
+  /* padding-bottom: 20px; */
+}
+
+nav li{
+  display: block;
+  padding: 20px;
+  float: left;
+}
+
+section {
+  background-color: #4CECFF;
+  height: 100vh;
+}
