@@ -30,5 +30,5 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:create]
 
-  resources :accessories, only: [:index]
+  resources :accessories, only: [:index, :show]
 end
