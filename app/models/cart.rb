@@ -13,4 +13,20 @@ class Cart
     @contents[accessory_id.to_s] ||= 0
     @contents[accessory_id.to_s] += 1
   end
+
+  def subtotal
+    sub_totals = []
+    @contents.each do |accessory_id, accessory_count|
+      sub_totals.push(Accessory.find(accessory_id).price * accessory_count)
+    end
+    sub_totals
+  end
+
+  def total
+    sub_totals = []
+    @contents.each do |accessory_id, accessory_count|
+      sub_totals.push(Accessory.find(accessory_id).price * accessory_count)
+    end
+    sub_totals.sum
+  end
 end
