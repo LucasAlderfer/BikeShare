@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   resources :conditions, only: [:index, :show]
 
+  get '/conditions-dashboard', to: 'conditions#dashboard'
+
   resources :trips, only: [:index, :show]
 
   resources :carts, only: [:create]
