@@ -13,7 +13,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       # TODO: success flash message
       session[:user_id] = user.id
-      redirect_to dashboard_path
+      if user.admin?
+        redirect_to admin_dashboard_path
+      else
+        redirect_to dashboard_path
+      end
     else
       # TODO: error flash message
       render :new
