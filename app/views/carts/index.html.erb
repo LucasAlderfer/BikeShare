@@ -1,0 +1,8 @@
+<% @cart_items.each do |item| %>
+<%= item.image %>
+<%= item.title %>
+<%= item.price %>
+<%= @cart.accessory_quantity(item.id) %>
+<%= @cart.subtotal(item.id) %><br>
+<% end %>
+<%= @cart.total %>
