@@ -28,21 +28,23 @@ describe Station do
     it {should respond_to(:trips_to)}
   end
   describe 'instance methods' do
-    station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
-    station_2 = Station.create(name: 'fred', dock_count:4, city:'Arvada', installation_date:'8/8/2010')
+    it 'tests all station instance methods' do
+      station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
+      station_2 = Station.create(name: 'fred', dock_count:4, city:'Arvada', installation_date:'8/8/2010')
 
-    trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
-    trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
-    trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station_id: 2, end_date: '8/11/2010', end_station_id: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
-    trip_4 = Trip.create!(duration:5, start_date:'8/10/2010', start_station_id: 2, end_date: '8/11/2010', end_station_id: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
-    trip_5 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Customer", zip_code: =)
-    trip_6 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 3, subscription_type: "Subscriber", zip_code: 22207)
+      trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
+      trip_3 = Trip.create!(duration:10, start_date:'8/10/2010', start_station_id: 2, end_date: '8/11/2010', end_station_id: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
+      trip_4 = Trip.create!(duration:5, start_date:'8/10/2010', start_station_id: 2, end_date: '8/11/2010', end_station_id: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
+      trip_5 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Customer", zip_code: =)
+      trip_6 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 3, subscription_type: "Subscriber", zip_code: 22207)
 
-    expect(station_1.total_trips_from).to eq(3)
-    expect(station_1.total_trips_to).to eq(3)
-    expect(station_1.most_trips_to).to eq(station_2) # I figure this will return the entire station object, thoughts?
-    expect(station_1.most_trips_from).to eq(station_2) # I figure this will return the entire station object, thoughts?
-    expect(station_1.max_trips_date).to eq('8/9/2010')
-    expect(station_1.most_common_zip).to eq(22207)
+      expect(station_1.total_trips_from).to eq(3)
+      expect(station_1.total_trips_to).to eq(3)
+      expect(station_1.most_trips_to).to eq(station_2) # I figure this will return the entire station object, thoughts?
+      expect(station_1.most_trips_from).to eq(station_2) # I figure this will return the entire station object, thoughts?
+      expect(station_1.max_trips_date).to eq('8/9/2010')
+      expect(station_1.most_common_zip).to eq(22207)
+    end
   end
 end
