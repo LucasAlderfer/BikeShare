@@ -9,10 +9,21 @@
   </head>
 
   <body>
-    <p>Cart Count: <%= @cart.total_count %></p>
-    <% flash.each do |type, message| %>
-      <%= content_tag :div, message, class: type %>
-    <% end %>
-    <%= yield %>
+    <nav>
+      <ul>
+        <li><h2>BikeShare</h2></li>
+        <% if current_user %></li>
+          <li><p>Logged in as <%= current_user.username %></p></li>
+        <% end %>
+        <li><p>Logout</p></li>
+        <li style="float:right"><p>Cart Count: <%= @cart.total_count %></p></li>
+      </ul>
+    </nav>
+    <section>
+      <% flash.each do |type, message| %>
+        <%= content_tag :div, message, class: type %>
+      <% end %>
+      <%= yield %>
+    </section>
   </body>
 </html>
