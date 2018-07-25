@@ -6,4 +6,19 @@
 <% end %>
 
 <% @precipitations.each do |amount| %>
-  <p></p>
+  <p>Highest number of rides during precipitation between <%= amount %>: <%= @trips.highest_rides_per_precipitation(amount) %></p>
+  <p>Average number of rides during precipitation between <%= amount %>: <%= @trips.average_rides_per_precipitation(amount) %></p>
+  <p>Lowest number of rides during precipitation between <%= amount %>: <%= @trips.lowest_rides_per_precipitation(amount) %></p>
+<% end %>
+
+<% @wind_speeds.each do |wind_speed| %>
+  <p>Highest number of rides during wind speed between <%= wind_speed %> mph: <%= @trips.highest_rides_per_wind_speed(wind_speed) %></p>
+  <p>Average number of rides during wind speed between <%= wind_speed %> mph: <%= @trips.average_rides_per_wind_speed(wind_speed) %></p>
+  <p>Lowest number of rides during wind speed between <%= wind_speed %> mph: <%= @trips.lowest_rides_per_wind_speed(wind_speed) %></p>
+<% end %>
+
+<% @visibilities.each do |visibility| %>
+  <p>Highest number of rides during mean visibility <%= visibility %>: <%= @trips.highest_rides_per_mean_visibility(visibility) %></p>
+  <p>Average number of rides during mean visibility <%= visibility %>: <%= @trips.average_rides_per_mean_visibility(visibility) %></p>
+  <p>Lowest number of rides during mean visibility <%= visibility %>: <%= @trips.lowest_rides_per_mean_visibility(visibility) %></p>
+<% end %>

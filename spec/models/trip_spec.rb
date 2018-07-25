@@ -165,6 +165,23 @@ describe Trip do
       expect(Trip.lowest_rides_per_temp(90..99)).to eq(1)
       expect(Trip.lowest_rides_per_temp(80..89)).to eq(1)
       expect(Trip.highest_rides_per_precipitation(0..0.49)).to eq 2
+      expect(Trip.highest_rides_per_precipitation(0.50..0.99)).to eq 2
+      expect(Trip.average_rides_per_precipitation(0..0.49)).to eq 1.5
+      expect(Trip.average_rides_per_precipitation(0.50..0.99)).to eq 1.5
+      expect(Trip.lowest_rides_per_precipitation(0..0.49)).to eq 1
+      expect(Trip.lowest_rides_per_precipitation(0.50..0.99)).to eq 1
+      expect(Trip.highest_rides_per_wind_speed(0..4)).to eq 2
+      expect(Trip.highest_rides_per_wind_speed(4..8)).to eq 2
+      expect(Trip.average_rides_per_wind_speed(0..4)).to eq 1.5
+      expect(Trip.average_rides_per_wind_speed(4..8)).to eq 1.5
+      expect(Trip.lowest_rides_per_wind_speed(0..4)).to eq 1
+      expect(Trip.lowest_rides_per_wind_speed(4..8)).to eq 1
+      expect(Trip.highest_rides_per_mean_visibility(0..3.9)).to eq 2
+      expect(Trip.highest_rides_per_mean_visibility(4..7.9)).to eq 2
+      expect(Trip.average_rides_per_mean_visibility(0..3.9)).to eq 1.5
+      expect(Trip.average_rides_per_mean_visibility(4..7.9)).to eq 1.5
+      expect(Trip.lowest_rides_per_mean_visibility(0..3.9)).to eq 1
+      expect(Trip.lowest_rides_per_mean_visibility(4..7.9)).to eq 1
     end
   end
 end
