@@ -24,14 +24,14 @@ describe 'User' do
 
     visit conditions_dashboard_path
 
-    expect(path).to eq(conditions_dashboard_path)
+    expect(current_path).to eq(conditions_dashboard_path)
 
-    expect(page).to have_content("Highest number of rides during max temp of 90-99: 2")
-    expect(page).to have_content("Average number of rides during max temp of 90-99: 1.5")
-    expect(page).to have_content("Lowest number of rides during max temp of 90-99: 1")
-    expect(page).to have_content("Highest number of rides during max temp of 80-89: 2")
-    expect(page).to have_content("Average number of rides during max temp of 80-89: 1.5")
-    expect(page).to have_content("Lowest number of rides during max temp of 80-89: 1")
+    expect(page).to have_content("Highest number of rides during max temp of 90..99: 2")
+    expect(page).to have_content("Average number of rides during max temp of 90..99: 1.5")
+    expect(page).to have_content("Lowest number of rides during max temp of 90..99: 1")
+    expect(page).to have_content("Highest number of rides during max temp of 80..89: 2")
+    expect(page).to have_content("Average number of rides during max temp of 80..89: 1.5")
+    expect(page).to have_content("Lowest number of rides during max temp of 80..89: 1")
     expect(page).to have_content("Highest number of rides during precipitation between 0-0.49\": 2")
     expect(page).to have_content("Average number of rides during precipitation between 0-0.49\": 1.5")
     expect(page).to have_content("Lowest number of rides during precipitation between 0-0.49\": 1")

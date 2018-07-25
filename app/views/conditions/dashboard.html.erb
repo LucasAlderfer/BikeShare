@@ -1,0 +1,9 @@
+
+<% @temps.each do |temp| %>
+  <p>Highest number of rides during max temp of <%= temp %>: <%= @trips.highest_rides_per_temp(temp) %></p>
+  <p>Average number of rides during max temp of <%= temp %>: <%= @trips.average_rides_per_temp(temp) %></p>
+  <p>Lowest number of rides during max temp of <%= temp %>: <%= @trips.lowest_rides_per_temp(temp) %></p>
+<% end %>
+
+<% @precipitations.each do |amount| %>
+  <p></p>
