@@ -1,8 +1,13 @@
-<% @cart_items.each do |item| %>
-<%= item.image %>
-<%= item.title %>
-<%= item.price %>
-<%= @cart.accessory_quantity(item.id) %>
-<%= @cart.subtotal(item.id) %><br>
-<% end %>
-<%= @cart.total %>
+<div class="cart">
+  <% @cart_items.each do |item| %>
+    <div id="accessory-<%= item.id %>" >
+      <%= item.image %>
+      <%= item.title %>
+      <%= item.price %>
+      <%= @cart.accessory_quantity(item.id) %>
+      <%= @cart.subtotal(item.id) %>
+      <%= link_to "Remove", cart_path(id: item.id), method: 'delete' %><br>
+    </div>
+  <% end %>
+  <%= @cart.total %>
+</div>
