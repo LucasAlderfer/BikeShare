@@ -14,5 +14,27 @@ describe Cart do
 
       expect(@cart.contents).to eq({'1' => 3, '2' => 4})
     end
+    it '.subtotal' do
+      part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'hjtkhtjk')
+      cart = Cart.new(session[:cart])
+      cart.add_accessory(part_1.id)
+      cart.add_accessory(part_1.id)
+
+      expected = 8
+
+      expect(cart.subtotal).to eq(expected)
+    end
+    it '.total' do
+      part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'hjtkhtjk')
+      part_2 = Accessory.create(title: 'thing2', description: 'kjhgt6s', price: 6, status: 0, image: 'IIIII')
+      cart = Cart.new(session[:cart])
+      cart.add_accessory(part_1.id)
+      cart.add_accessory(part_2.id)
+
+      expected = 10
+
+      expect(cart.total).to eq(expected)
+    end
+
   end
 end
