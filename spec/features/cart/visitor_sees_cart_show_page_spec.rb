@@ -47,7 +47,7 @@ describe 'visitor sees cart show page' do
     click_on 'Submit'
 
     visit cart_path
-    save_and_open_page
+    
     expect(page).to have_content(part_1.image)#thumbnail size
     expect(page).to have_content(part_1.title)
     expect(page).to have_content(part_1.price)
