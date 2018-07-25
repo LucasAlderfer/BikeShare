@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'dashboard#index'
 
-  get '/trips/dashboard', to: 'trips#dashboard'
+  get '/trips-dashboard', to: 'trips#dashboard'
 
 
   get '/stations-dashboard', to: 'stations#dashboard'
