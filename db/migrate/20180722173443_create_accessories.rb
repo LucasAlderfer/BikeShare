@@ -4,7 +4,7 @@ class CreateAccessories < ActiveRecord::Migration[5.1]
       t.string :title
       t.string :description
       t.integer :price
-      t.integer :status
+      t.integer :status, default: 0
       t.string :image
     end
   end
