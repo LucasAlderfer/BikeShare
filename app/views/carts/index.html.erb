@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <p>Total: <%= @cart.total %></p>
-  <% if current_user %>
+  <% if current_user %> <!-- TODO visitor checkout should redirect to login -->
     <p><%= button_to 'Checkout', user_orders_path(current_user), method: 'create' %>
   <% end %>
 </div>
