@@ -21,8 +21,7 @@ Rails.application.routes.draw do
   delete '/cart', to: 'carts#destroy'
 
   resources :users, only: [:new, :create, :show, :update, :edit] do
-
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :new, :create]
   end
 
   resources :stations, param: :slug
