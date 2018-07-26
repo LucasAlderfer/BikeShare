@@ -5,7 +5,7 @@ class StationsController < ApplicationController
   end
 
   def show
-    @station = Station.find_by_name(params[:slug])
+    @station = Station.find_by(slug: params[:slug])
   end
 
   def dashboard
