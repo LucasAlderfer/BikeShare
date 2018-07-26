@@ -10,5 +10,7 @@
     </div>
   <% end %>
   <p>Total: <%= @cart.total %></p>
-  <p><%= button_to 'Checkout', user_orders_path(@current_user), method: 'create' %>
+  <% if current_user %>
+    <p><%= button_to 'Checkout', user_orders_path(current_user), method: 'create' %>
+  <% end %>
 </div>
