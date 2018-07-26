@@ -20,9 +20,11 @@ Rails.application.routes.draw do
 
   delete '/cart', to: 'carts#destroy'
 
-  resources :users, only: [:new, :create, :show, :update, :edit] do
+  patch '/cart', to: 'carts#update'
 
-    resources :orders, only: [:show]
+
+  resources :users, only: [:new, :create, :show, :update, :edit] do
+    resources :orders, only: [:show, :create]
   end
 
   resources :stations, param: :slug
