@@ -29,12 +29,12 @@ describe 'A user visits bike shop' do
 
       visit cart_path
 
-      fill_in :contents, with: 5
+      fill_in :new_quantity, with: 5
       click_on "Update Quantity"
 
       expect(page).to have_content("Quantity: 5")
 
-      fill_in :contents, with: 2
+      fill_in :new_quantity, with: 2
       click_on "Update Quantity"
 
       expect(page).to have_content("Quantity: 2")

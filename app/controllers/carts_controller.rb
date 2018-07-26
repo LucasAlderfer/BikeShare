@@ -16,7 +16,7 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.contents[params[:id]] = params[:contents].to_i
+    @cart.contents[params[:id]] = params[:new_quantity].to_i
     redirect_to cart_path
   end
 
