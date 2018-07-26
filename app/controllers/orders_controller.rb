@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.create
+    session[:cart] = nil
+
     @cart.contents.each do |id, quantity|
       @order.order_accessories.create(quantity: quantity, accessory_id: id.to_i)
     end
