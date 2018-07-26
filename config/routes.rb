@@ -24,8 +24,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:new, :create, :show, :update, :edit] do
-
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :create]
   end
 
   resources :stations, param: :slug

@@ -12,10 +12,15 @@
     <nav>
       <ul>
         <li><h2>BikeShare</h2></li>
-        <% if current_user %></li>
+        <% if current_admin? %>
+          <li><p>Logged in as Admin User: <%= current_user.username %></p></li>
+          <li><p><%= link_to 'Logout', logout_path, method: :delete %></p></li>
+        <% elsif current_user %>
           <li><p>Logged in as <%= current_user.username %></p></li>
+          <li><p><%= link_to 'Logout', logout_path, method: :delete %></p></li>
+        <% else %>
+          <li><p><%= link_to 'Login', login_path %></p></li>
         <% end %>
-        <li><p>Logout</p></li>
         <li style="float:right"><p>Cart Count: <%= @cart.total_count %></p></li>
       </ul>
     </nav>
