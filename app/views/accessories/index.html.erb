@@ -1,10 +1,10 @@
 <% @accessories.each do |accessory| %>
-  <section id='accessory-<%= accessory.id %>'>
+  <div id='accessory-<%= accessory.id %>'>
     <%= accessory.title %>
      <%if accessory.status == 0 %>
       <%= button_to "Add to Cart", carts_path(accessory_id: accessory.id) %>
     <% else %>
       <p>Accessory Retired</p>
-    <% end %>
-  </section>
+    <% end %><br>
+  </div>
 <% end %>
