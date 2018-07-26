@@ -37,4 +37,8 @@ class Cart
     end
     ids
   end
+
+  def persisted?
+    true
+  end
 end

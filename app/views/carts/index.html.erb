@@ -5,9 +5,12 @@
       <p>Title:<%= item.title %></p>
       <p>Price:<%= item.price %></p>
       <p>Quantity: <%= @cart.accessory_quantity(item.id) %></p>
+
       <p>Enter a new quantity:
-        <% form_for @cart do |f|  %>
-          <%= f.number @cart.quantity %>
+        <%= form_tag(cart_path(id: item.id), method: "patchr") do %>
+          <%= label_tag "Change Quantity:" %>
+          <%= number_field_tag :contents %>
+          <%= submit_tag "Update Quantity"%>
         <% end %>
       </p>
 
