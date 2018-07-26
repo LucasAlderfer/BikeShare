@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180724000549) do
+ActiveRecord::Schema.define(version: 20180725234754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,19 +55,19 @@ ActiveRecord::Schema.define(version: 20180724000549) do
     t.integer "dock_count"
     t.string "city"
     t.date "installation_date"
+    t.integer "initial_bike_count"
+    t.string "slug"
   end
 
   create_table "trips", force: :cascade do |t|
     t.bigint "duration"
     t.datetime "start_date"
-    t.bigint "start_station_id"
+    t.string "start_station"
     t.datetime "end_date"
-    t.bigint "end_station_id"
+    t.string "end_station"
     t.bigint "bike_id"
     t.string "subscription_type"
     t.bigint "zip_code"
-    t.index ["end_station_id"], name: "index_trips_on_end_station_id"
-    t.index ["start_station_id"], name: "index_trips_on_start_station_id"
   end
 
   create_table "users", force: :cascade do |t|

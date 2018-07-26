@@ -1,6 +1,8 @@
 class Station < ApplicationRecord
   validates_presence_of :name, :city, :dock_count, :installation_date
 
+  before_save :generate_slug
+
   def self.stations_count
     count
   end
@@ -28,4 +30,9 @@ class Station < ApplicationRecord
   has_many :trips_from, :class_name => "Trip", :foreign_key => 'start_station_id'
   has_many :trips_to, :class_name => "Trip", :foreign_key => 'end_station_id'
 
+  private
+
+  def generate_slug
+    self.slug = name.parameterize
+  end
 end
