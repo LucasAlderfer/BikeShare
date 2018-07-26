@@ -25,13 +25,11 @@ class Trip < ApplicationRecord
   end
 
   def self.station_start_max
-    station_id = Trip.select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from desc').limit(1).first.start_station_id
-    Station.find(station_id).name
+    station_id = Trip.select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from desc').limit(1).first.start_station.name
   end
 
   def self.station_end_max
-    station_id = Trip.select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from').limit(1).first.start_station_id
-    Station.find(station_id).name
+    station_id = Trip.select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from').limit(1).first.start_station.name
   end
 
   def self.number_of_rides_per_month
@@ -82,12 +80,20 @@ class Trip < ApplicationRecord
     group("date_trunc('day', start_date)").order('count_all desc').count.first[1]
   end
 
+  def self.most_trips_weather
+    Condition.find_by_cond_date(date_with_most_trips)
+  end
+
   def self.date_with_least_trips
     group("date_trunc('day', start_date)").order('count_all').count.first[0]
   end
 
   def self.least_trips_in_one_day_count
     group("date_trunc('day', start_date)").order('count_all').count.first[1]
+  end
+
+  def self.least_trips_weather
+    Condition.find_by_cond_date(date_with_least_trips)
   end
 
   def self.highest_rides_per_temp(range)

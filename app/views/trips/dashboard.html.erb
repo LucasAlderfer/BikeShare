@@ -13,8 +13,12 @@
 <p>Station Most Frequently Ended At: <%= @trips.station_end_max %></p>
 <p>Date With Largest Number of Trips: <%= @trips.date_with_most_trips %></p>
 <p>Count of Most Trips in One Day: <%= @trips.most_trips_in_one_day_count %></p>
+<p>Weather on date with largest number of trips: High - <%= @trips.most_trips_weather.max_temperature %>
+ degrees, Mean - <%= @trips.most_trips_weather.mean_temperature %> degrees, Min - <%= @trips.most_trips_weather.min_temperature %> degrees, Humidity - <%= @trips.most_trips_weather.mean_humidity %>, Visibility - <%= @trips.most_trips_weather.mean_visibility %>, Wind Speed - <%= @trips.most_trips_weather.mean_wind_speed %>, Precipitation - <%= @trips.most_trips_weather.precipitation %></p>
 <p>Date With Lowest Number of Trips: <%= @trips.date_with_least_trips %></p>
 <p>Count of Least Trips in One Day: <%= @trips.least_trips_in_one_day_count %></p>
+<p>Weather on date with fewest number of trips: High - <%= @trips.least_trips_weather.max_temperature %>
+ degrees, Mean - <%= @trips.least_trips_weather.mean_temperature %> degrees, Min - <%= @trips.least_trips_weather.min_temperature %> degrees, Humidity - <%= @trips.least_trips_weather.mean_humidity %>, Visibility - <%= @trips.least_trips_weather.mean_visibility %>, Wind Speed - <%= @trips.least_trips_weather.mean_wind_speed %>, Precipitation - <%= @trips.least_trips_weather.precipitation %></p>
 <% @trips.number_of_rides_per_month.each do |date, value| %>
   <%= date.strftime("%B %Y") %>: <%= value %>
   <br>
