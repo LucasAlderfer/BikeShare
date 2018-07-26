@@ -102,10 +102,11 @@ describe 'Visiting the trips dashboard' do
       trip_6 = Trip.create!(duration:9, start_date:'8/6/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 7, subscription_type: "Customer", zip_code: 22406)
 
       most_ridden_bike = Trip.bike_with_most_rides
+      most_number_of_rides = Trip.most_rides_on_one_bike
 
       visit trips_dashboard_path
 
-      expect(page).to have_content("Most Ridden Bike: #{most_ridden_bike}")
+      expect(page).to have_content("Most Ridden Bike: #{most_ridden_bike}, #{most_number_of_rides} rides")
     end
     it 'sees the Least ridden bike with total number of rides for that bike' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22207)
@@ -116,10 +117,11 @@ describe 'Visiting the trips dashboard' do
       trip_6 = Trip.create!(duration:9, start_date:'8/6/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
 
       least_ridden_bike = Trip.bike_with_least_rides
+      least_number_of_rides = Trip.least_rides_on_one_bike
 
       visit trips_dashboard_path
 
-      expect(page).to have_content("Least Ridden Bike: #{least_ridden_bike}")
+      expect(page).to have_content("Least Ridden Bike: #{least_ridden_bike}, #{least_number_of_rides} rides")
     end
     it 'sees the User subscription type breakout with both count and percentage' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22207)

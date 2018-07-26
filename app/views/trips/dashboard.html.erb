@@ -2,8 +2,8 @@
 <p>Longest Ride: <%= @trips.longest_duration %></p>
 <p>Shortest Ride: <%= @trips.shortest_duration %></p>
 
-<p>Most Ridden Bike: <%= @trips.bike_with_most_rides %></p>
-<p>Least Ridden Bike: <%= @trips.bike_with_least_rides %></p>
+<p>Most Ridden Bike: <%= @trips.bike_with_most_rides %>, <%= @trips.most_rides_on_one_bike %> rides</p>
+<p>Least Ridden Bike: <%= @trips.bike_with_least_rides %>, <%= @trips.least_rides_on_one_bike %> rides</p>
 <p>Subscriber Count: <%= @trips.subscriber_count %></p>
 <p>Subscriber Percentage: <%= @trips.subscriber_percent %></p>
 <p>Customer Count: <%= @trips.customer_count %></p>
@@ -19,4 +19,6 @@
   <%= date.strftime("%B %Y") %>: <%= value %>
   <br>
 <% end %>
-<p><%= @trips.total_trips_per_year.keys.first.year %> Ride Total: <%= @trips.total_trips_per_year.values.first %></p>
+<% @trips.total_trips_per_year.each do |date, trips| %>
+  <p><%= date.year %> Ride Total: <%= trips %></p>
+<% end %>

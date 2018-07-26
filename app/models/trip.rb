@@ -13,27 +13,29 @@ class Trip < ApplicationRecord
   belongs_to :end_station, :class_name => 'Station'
 
   def self.average_duration
-    average(:duration)
+    average(:duration).round(2)
   end
 
   def self.longest_duration
-    maximum(:duration)
+    maximum(:duration).round(2)
   end
 
   def self.shortest_duration
-    minimum(:duration)
+    minimum(:duration).round(2)
   end
 
   def self.station_start_max
-    select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from desc').limit(1).first.start_station_id
+    station_id = Trip.select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from desc').limit(1).first.start_station_id
+    Station.find(station_id).name
   end
 
   def self.station_end_max
-    select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from').limit(1).first.start_station_id
+    station_id = Trip.select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from').limit(1).first.start_station_id
+    Station.find(station_id).name
   end
 
   def self.number_of_rides_per_month
-    group("date_trunc('month', start_date)").order('count_all desc').count
+    group("date_trunc('month', start_date)").order("date_trunc('month', start_date)").count
   end
 
   def self.total_trips_per_year
@@ -44,8 +46,16 @@ class Trip < ApplicationRecord
     group(:bike_id).count(:bike_id).max[0]
   end
 
+  def self.most_rides_on_one_bike
+    group(:bike_id).count(:bike_id).max[1]
+  end
+
   def self.bike_with_least_rides
     group(:bike_id).count(:bike_id).min[0]
+  end
+
+  def self.least_rides_on_one_bike
+    group(:bike_id).count(:bike_id).min[1]
   end
 
   def self.subscriber_count
@@ -57,11 +67,11 @@ class Trip < ApplicationRecord
   end
 
   def self.subscriber_percent
-    (subscriber_count * 100.00)/all.count
+    ((subscriber_count * 100.00)/all.count).round(2)
   end
 
   def self.customer_percent
-    (customer_count * 100.00)/all.count
+    ((customer_count * 100.00)/all.count).round(2)
   end
 
   def self.date_with_most_trips
@@ -87,7 +97,7 @@ class Trip < ApplicationRecord
   def self.average_rides_per_temp(range)
     x = Trip.where(start_date: Condition.where(max_temperature: (range)).pluck(:cond_date)).group(:start_date).count.values
     unless x.count == 0
-      x.sum.to_f / x.count
+      (x.sum.to_f / x.count).round(2)
     else
       0
     end
@@ -104,7 +114,7 @@ class Trip < ApplicationRecord
   def self.average_rides_per_precipitation(range)
     x = Trip.where(start_date: Condition.where(precipitation: (range)).pluck(:cond_date)).group(:start_date).count.values
     unless x.count == 0
-      x.sum.to_f / x.count
+      (x.sum.to_f / x.count).round(2)
     else
       0
     end
@@ -121,7 +131,7 @@ class Trip < ApplicationRecord
   def self.average_rides_per_wind_speed(range)
     x = Trip.where(start_date: Condition.where(mean_wind_speed: (range)).pluck(:cond_date)).group(:start_date).count.values
     unless x.count == 0
-      x.sum.to_f / x.count
+      (x.sum.to_f / x.count).round(2)
     else
       0
     end
@@ -138,7 +148,7 @@ class Trip < ApplicationRecord
   def self.average_rides_per_mean_visibility(range)
     x = Trip.where(start_date: Condition.where(mean_visibility: (range)).pluck(:cond_date)).group(:start_date).count.values
     unless x.count == 0
-      x.sum.to_f / x.count
+      (x.sum.to_f / x.count).round(2)
     else
       0
     end
