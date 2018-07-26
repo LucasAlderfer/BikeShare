@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180724000549) do
     t.string "title"
     t.string "description"
     t.integer "price"
-    t.integer "status"
+    t.integer "status", default: 0
     t.string "image"
   end
 
