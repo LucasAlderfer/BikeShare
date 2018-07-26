@@ -10,7 +10,7 @@ describe 'as an admin' do
 
     fill_in :username, with: admin.username
     fill_in :password, with: admin.password
-    click_on "Login"
+    click_button "Login"
 
     expect(current_path).to eq admin_dashboard_path
     expect(page).to have_content "Logged in as Admin User: #{admin.username}"#Add conditional to Nav

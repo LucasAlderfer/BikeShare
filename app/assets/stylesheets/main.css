@@ -9,17 +9,13 @@ nav {
   text-align: center;
 }
 
-nav h2 {
-  /* padding-bottom: 20px; */
-}
-
 nav li{
   display: block;
   padding: 20px;
   float: left;
 }
 
-section {
+body section {
   background-color: #4CECFF;
   height: 100vh;
 }

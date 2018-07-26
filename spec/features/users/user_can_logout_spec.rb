@@ -19,7 +19,7 @@ describe 'A user visits the root page' do
 
       fill_in :username, with: 'Dude'
       fill_in :password, with: 'huISER3'
-      click_on 'Login'
+      click_button 'Login'
 
       visit root_path
 

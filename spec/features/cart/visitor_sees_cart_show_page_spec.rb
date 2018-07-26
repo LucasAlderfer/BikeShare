@@ -57,7 +57,7 @@ describe 'visitor sees cart show page' do
     expect(page).to have_content(total)#this is fine here but should be an actual method for the page
   end
   it 'can delete accessories from cart' do
-    part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'hjtkhtjk')
+    part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'http://placekitten/200/200')
 
     visit '/bike-shop'
 

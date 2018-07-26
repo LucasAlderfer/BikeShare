@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180724000549) do
+ActiveRecord::Schema.define(version: 20180725234754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180724000549) do
     t.string "title"
     t.string "description"
     t.integer "price"
-    t.integer "status"
+    t.integer "status", default: 0
     t.string "image"
   end
 
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20180724000549) do
     t.integer "dock_count"
     t.string "city"
     t.date "installation_date"
+    t.string "slug"
   end
 
   create_table "trips", force: :cascade do |t|

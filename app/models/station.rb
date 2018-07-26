@@ -1,8 +1,12 @@
 class Station < ApplicationRecord
   validates_presence_of :name, :city, :dock_count, :installation_date
 
+
   has_many :trips_from, :class_name => "Trip", :foreign_key => 'start_station_id'
   has_many :trips_to, :class_name => "Trip", :foreign_key => 'end_station_id'
+
+  before_save :generate_slug
+
 
   def self.stations_count
     count
@@ -36,6 +40,7 @@ class Station < ApplicationRecord
     trips_to.count
   end
 
+
   def self.most_trips_to
     select('stations.*, count(trips.end_station_id) AS station_count')
           .joins(:trips_to)
@@ -66,5 +71,11 @@ class Station < ApplicationRecord
     # trips_from.group(:start_date).count.max_by{|k, v| v}[0]
     max = trips_from.group(:bike_id).count.values.max
     trips_from.group(:bike_id).count.key(max)
+  end
+
+  private
+
+  def generate_slug
+    self.slug = name.parameterize
   end
 end

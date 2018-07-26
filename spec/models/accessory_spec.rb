@@ -13,4 +13,11 @@ describe Accessory do
     it {should have_many(:order_accessories)}
     it {should have_many(:orders).through(:order_accessories)}
   end
+  describe 'default status' do
+    it 'should default to a status of 0' do
+      accessory = Accessory.create(title: "asdf", description: "sdfjkhdsf", image: "asdf", price: 4)
+
+      expect(accessory).to be_valid
+    end
+  end
 end

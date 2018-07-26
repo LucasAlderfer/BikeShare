@@ -37,4 +37,5 @@ class Cart
     end
     ids
   end
+
 end
