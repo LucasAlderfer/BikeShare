@@ -18,5 +18,23 @@ describe 'A user visits bike shop' do
 
       expect(page).to have_content('Cart Count: 1')
     end
+    it 'can change the quantity of an item' do
+      part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'http://placekitten/200/200')
+
+      visit '/bike-shop'
+
+      within "#accessory-#{part_1.id}" do
+        click_on 'Add to Cart'
+      end
+
+      visit cart_path
+
+      fill_in :quantity, with: 5
+
+      expect(page).to have_content("Quantity: 5")
+
+      fill_in :quantity, with: 2
+      expect(page).to have_content("Quantity: 2")
+    end
   end
 end
