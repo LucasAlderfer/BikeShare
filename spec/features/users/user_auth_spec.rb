@@ -25,13 +25,12 @@ describe 'visiting /' do
       exepect(current_path).to eq login/path
       expect(page).to have_content 'Must be logged in to checkout'
     end
-    xit 'cannot register as an admin' do
-      visit root_path
-      click_on 'Sign Up'
+    it 'cannot register as an admin' do
+      visit login_path
+      click_on 'Create Account'
       expect(page).to_not have_content "Role:"
-      visit admin_trip_new_path
-      expect(current_path).to eq root_path
-      expect(page).to have_content "The page you were looking for doesn't exist!"
+      visit admin_dashboard_path
+      expect(page).to have_content "The page you were looking for doesn't exist"
     end
   end
   context 'as a user' do
@@ -43,7 +42,7 @@ describe 'visiting /' do
 
       fill_in :username, with: 'bill'
       fill_in :password, with: 'secure'
-      click_on 'Login'
+      click_button 'Login'
 
       expect(current_path).to eq dashboard_path
       expect(page).to have_content "Logged in as #{user.username}"
@@ -56,7 +55,7 @@ describe 'visiting /' do
       visit login_path
       fill_in :username, with: user_1.username
       fill_in :password, with: user_1.password
-      click_on 'Login'
+      click_button 'Login'
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
