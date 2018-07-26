@@ -9,10 +9,6 @@ nav {
   text-align: center;
 }
 
-nav h2 {
-  /* padding-bottom: 20px; */
-}
-
 nav li{
   display: block;
   padding: 20px;
