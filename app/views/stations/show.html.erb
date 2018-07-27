@@ -1,7 +1,11 @@
-<%= @station.name %>
-<%= @station.city %>
-<%= @station.installation_date %>
-<%= @station.dock_count %>
+<p>Station Name: <%= @station.name %></p>
+<p>City: <%= @station.city %></p>
+<p>Installation Date: <%= @station.installation_date %></p>
+<p>Dock Count: <%= @station.dock_count %></p>
+<% if current_admin? %>
+  <%= button_to "Edit", edit_admin_station_path(@station.name), method: :get %>
+  <%= button_to "Delete", admin_station_path(@station.name), method: :delete %>
+<% end %>
 <p>Number of rides started at this station: <%= @station.total_trips_from %></P>
 <p>Number of rides completed at this station: <%= @station.total_trips_to %></P>
 <p>Most frequent destination station from this station: <%= @station.most_trips_to %></P>
@@ -9,3 +13,4 @@
 <p>Date with most starting trips: <%= @station.max_trips_date %></P>
 <p>Most frequent customer zip code: <%= @station.most_common_zip %></P>
 <p>Bike that started the most trips from this station: Bike <%= @station.most_frequent_bike %></P>
+

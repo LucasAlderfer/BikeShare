@@ -27,7 +27,11 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :create]
   end
 
-  resources :stations, param: :slug
+  resources :stations, param: :slug, only: [:index, :show]
+
+  namespace :admin do
+    resources :stations, param: :slug, only: [:edit, :destroy, :new, :create, :update]
+  end
 
   resources :conditions, only: [:index, :show]
 

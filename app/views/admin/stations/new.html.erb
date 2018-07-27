@@ -1,0 +1,17 @@
+<%= form_for [:admin, @station] do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :dock_count %>
+<%= f.number_field :dock_count %>
+
+<%= f.label :city %>
+<%= f.text_field :city %>
+
+<%= f.label :installation_date %>
+<%= f.text_field :installation_date %>
+
+<%= f.submit "Create Station" %>
+
+<% end %>
