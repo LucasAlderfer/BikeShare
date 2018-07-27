@@ -2,3 +2,10 @@
 <%= @station.city %>
 <%= @station.installation_date %>
 <%= @station.dock_count %>
+<p>Number of rides started at this station: <%= @station.total_trips_from %></P>
+<p>Number of rides completed at this station: <%= @station.total_trips_to %></P>
+<p>Most frequent destination station from this station: <%= @station.most_trips_to %></P>
+<p>Most frequent origination station to this station: <%= @station.most_trips_from %></P>
+<p>Date with most starting trips: <%= @station.max_trips_date %></P>
+<p>Most frequent customer zip code: <%= @station.most_common_zip %></P>
+<p>Bike that started the most trips from this station: Bike <%= @station.most_frequent_bike %></P>
