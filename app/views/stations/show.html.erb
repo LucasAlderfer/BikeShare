@@ -2,3 +2,7 @@
 <%= @station.city %>
 <%= @station.installation_date %>
 <%= @station.dock_count %>
+<% if current_admin? %>
+  <%= button_to "Edit", edit_admin_station_path(@station.name), method: :get %>
+  <%= button_to "Delete", admin_station_path(@station.name), method: :delete %>
+<% end %>
