@@ -22,18 +22,20 @@ Accessory.create(title: "Santa Cruz Reserve Carbon 30 27'5\" I9 HG 110 Wheelset"
 Accessory.create(title: "SRAM GX 1x11 Speed Long Cage Rear Derailleur", description: "GX derailleurs share the key features of higher-priced models and are available for 1x11 and 2x11 drive trains.", price: 95, image: "https://cdn.shopify.com/s/files/1/0286/1214/products/RD6129_x700.jpg?v=1501620140")
 
 
-
-
 CSV.foreach('./db/csv/weather.csv', headers: true, header_converters: :symbol) do |condition|
-  Condition.create(cond_date: Date.strptime(condition[:date], '%m/%d/%Y'),
-                   max_temperature: condition[:max_temperature_f],
-                   mean_temperature: condition[:mean_temperature_f],
-                   min_temperature: condition[:min_temperature_f],
-                   mean_humidity: condition[:mean_humidity],
-                   mean_visibility: condition[:mean_visibility_miles],
-                   mean_wind_speed: condition[:mean_wind_speed_mph],
-                   precipitation: condition[:precipitation_inches]
-                )
+  condition_date = Date.strptime(condition[:date], '%m/%d/%Y')
+
+  if condition[:zip_code] == '94107'
+    Condition.create(cond_date: Date.strptime(condition[:date], '%m/%d/%Y'),
+                     max_temperature: condition[:max_temperature_f],
+                     mean_temperature: condition[:mean_temperature_f],
+                     min_temperature: condition[:min_temperature_f],
+                     mean_humidity: condition[:mean_humidity],
+                     mean_visibility: condition[:mean_visibility_miles],
+                     mean_wind_speed: condition[:mean_wind_speed_mph],
+                     precipitation: condition[:precipitation_inches]
+                  )
+  end
 end
 
 CSV.foreach('./db/csv/station.csv', headers: true, header_converters: :symbol) do |station|
@@ -44,16 +46,20 @@ CSV.foreach('./db/csv/station.csv', headers: true, header_converters: :symbol) d
                 )
 end
 
+
+@random = Random.new
 CSV.foreach('./db/csv/trip.csv', headers: true, header_converters: :symbol) do |trip|
-  Trip.create(duration: trip[:duration],
-              start_date: DateTime.strptime(trip[:start_date], '%m/%d/%Y'),
-              start_station_id: trip[:start_station_id],
-              end_date: DateTime.strptime(trip[:end_date], '%m/%d/%Y'),
-              end_station_id: trip[:end_station_id],
-              bike_id: trip[:bike_id],
-              subscription_type: trip[:subscription_type],
-              zip_code: trip[:zip_code]
-            )
+  if @random.rand(50) == 26
+    Trip.create(duration: trip[:duration],
+                start_date: DateTime.strptime(trip[:start_date], '%m/%d/%Y %H:%M'),
+                start_station_id: trip[:start_station_id].to_i,
+                end_date: DateTime.strptime(trip[:end_date], '%m/%d/%Y %H:%M'),
+                end_station_id: trip[:end_station_id].to_i,
+                bike_id: trip[:bike_id],
+                subscription_type: trip[:subscription_type],
+                zip_code: trip[:zip_code]
+              )
+  end
 end
 
 
