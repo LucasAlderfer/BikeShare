@@ -43,8 +43,8 @@ describe Station do
       expect(station_1.total_trips_from).to eq(4)
       expect(station_1.total_trips_to).to eq(3)
 
-      expect(Station.most_trips_to).to eq(station_2) # I figure this will return the entire station object, thoughts?
-      expect(Station.most_trips_from).to eq(station_1) # I figure this will return the entire station object, thoughts?
+      expect(station_1.most_trips_to).to eq(station_2.name) # I figure this will return the entire station object, thoughts?
+      expect(station_2.most_trips_from).to eq(station_1.name) # I figure this will return the entire station object, thoughts?
       expect(station_1.max_trips_date).to eq(trip_7.start_date)
       expect(station_1.most_common_zip).to eq(22207)
       expect(station_1.most_frequent_bike).to eq(4)

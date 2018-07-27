@@ -41,18 +41,16 @@ class Station < ApplicationRecord
   end
 
 
-  def self.most_trips_to
-    select('stations.*, count(trips.end_station_id) AS station_count')
-          .joins(:trips_to)
-          .group(:id)
-          .order('station_count desc').first
+  def most_trips_to
+    max = trips_from.group(:end_station_id).count.values.max
+    station = trips_from.group(:end_station_id).count.key(max)
+    Station.find(station).name
   end
 
-  def self.most_trips_from
-    select('stations.*, count(trips.start_station_id) AS station_count')
-          .joins(:trips_from)
-          .group(:id)
-          .order('station_count desc').first
+  def most_trips_from
+    max = trips_to.group(:start_station_id).count.values.max
+    station = trips_to.group(:start_station_id).count.key(max)
+    Station.find(station).name
   end
 
   def max_trips_date
