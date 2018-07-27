@@ -1,3 +1,5 @@
+<h1>Welcome to the stations index!</h1>
+
 <% @stations.each do |station| %>
   <div id="station-<%=station.id%>">
     <p>Name: <%= link_to station.name, station_path(station.slug) %></p>
