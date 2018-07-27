@@ -1,21 +1,88 @@
 body {
+  font-family: 'Paytone One';
   display: grid;
   grid-template-rows: auto auto;
-  background-color: #00E4FF
+}
+
+.top {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+header {
+  display: grid;
+  grid-template-columns: auto auto;
+  font-size: 72px;
+  font-style: italic;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+header p{
+  justify-self: start;
+  align-self: start;
+}
+
+header img {
+  justify-self: end;
 }
 
 nav {
-  background-color: #00B7CC;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  background-color: black;
+  color: white;
 }
 
-nav li{
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav a:visited {
+  color: white;
+}
+
+nav a:hover {
+  color: red;
+}
+
+.dashdrop:hover .droplinks {
   display: block;
-  padding: 20px;
-  float: left;
 }
 
-body section {
-  background-color: #4CECFF;
-  height: 100vh;
+.dashdrop:hover .dropbtn {
+  color: red;
+}
+
+.dropbtn {
+  color: white;
+  background-color: black;
+  border: none;
+  font-family: 'Paytone One';
+  font-size: 17px;
+}
+
+.dropbtn:hover {
+  color: red;
+}
+
+.dashdrop {
+  position: relative;
+  display: inline-block;
+}
+
+.droplinks {
+  display: none;
+  position: absolute;
+  background-color: black;
+}
+
+.droplinks a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  min-width: 120px;
+  padding-left: 10px;
 }
