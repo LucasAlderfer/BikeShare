@@ -1,12 +1,26 @@
-<h1>Welcome to the conditions index!</h1>
+<h1 class='index-title'>Welcome to the conditions index!</h1>
 
-<% @conditions.each do |condition| %>
-  <p>Date: <%= condition.cond_date %></p>
-  <p>Max Temperature: <%= condition.max_temperature %></p>
-  <p>Mean Temperature: <%= condition.mean_temperature %></p>
-  <p>Min Temperature: <%= condition.min_temperature %></p>
-  <p>Mean Humidity: <%= condition.mean_humidity %></p>
-  <p>Mean Visibility: <%= condition.mean_visibility %></p>
-  <p>Mean Wind Speed: <%= condition.mean_wind_speed %></p>
-  <p>Precipitation: <%= condition.precipitation %></p>
-<% end %>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Max Temperature</th>
+    <th>Mean Temperature</th>
+    <th>Min Temperature</th>
+    <th>Mean Humidity</th>
+    <th>Mean Visibility</th>
+    <th>Mean Wind Speed</th>
+    <th>Precipitation</th>
+  </tr>
+  <% @conditions.each do |condition| %>
+    <tr>
+      <td><%= condition.cond_date %></td>
+      <td><%= condition.max_temperature %></td>
+      <td><%= condition.mean_temperature %></td>
+      <td><%= condition.min_temperature %></td>
+      <td><%= condition.mean_humidity %></td>
+      <td><%= condition.mean_visibility %></td>
+      <td><%= condition.mean_wind_speed %></td>
+      <td><%= condition.precipitation %></td>
+    </tr>
+  <% end %>
+</table>

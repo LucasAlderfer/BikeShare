@@ -1,14 +1,27 @@
-<h1>Welcome to the stations index!</h1>
+<h1 class='index-title'>Welcome to the stations index!</h1>
 
-<% @stations.each do |station| %>
-  <div id="station-<%=station.id%>">
-    <p>Name: <%= link_to station.name, station_path(station.slug) %></p>
-    <p>Dock Count: <%= station.dock_count %></p>
-    <p>City: <%= station.city %></p>
-    <p>Installation Date: <%= station.installation_date %></p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Dock Count</th>
+    <th>City</th>
+    <th>Installation Date</th>
     <% if current_admin? %>
-      <%= button_to "Edit", edit_admin_station_path(station.name), method: :get %>
-      <%= button_to "Delete", admin_station_path(station.name), method: :delete %>
+      <th colspan="2">Admin functions</th>
     <% end %>
-  </div>
-<% end %>
+  </tr>
+  <% @stations.each do |station| %>
+    <div id="station-<%=station.id%>">
+      <tr>
+        <td><%= link_to station.name, station_path(station.slug) %></td>
+        <td><%= station.dock_count %></td>
+        <td><%= station.city %></td>
+        <td><%= station.installation_date %></td>
+        <% if current_admin? %>
+          <td><%= button_to "Edit", edit_admin_station_path(station.name), method: :get %></td>
+          <td><%= button_to "Delete", admin_station_path(station.name), method: :delete %></td>
+        <% end %>
+      </tr>
+    </div>
+  <% end %>
+</table>
