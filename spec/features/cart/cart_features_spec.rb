@@ -39,5 +39,22 @@ describe 'A user visits bike shop' do
 
       expect(page).to have_content("Quantity: 2")
     end
+    it 'cannot change the quantity to 0 or a negative value' do
+      part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'http://placekitten/200/200')
+
+      visit '/bike-shop'
+
+      within "#accessory-#{part_1.id}" do
+        click_on 'Add to Cart'
+      end
+
+      visit cart_path
+
+      fill_in :new_quantity, with: -5
+      click_on "Update Quantity"
+
+      expect(page).to_not have_content("Quantity: -5")
+      expect(page).to have_content("Quantity: 1")
+    end
   end
 end
