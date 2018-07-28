@@ -67,7 +67,7 @@ describe 'as a admin' do
 
       visit new_admin_condition_path
 
-      fill_in :condition_date, with: '8/9/2010'
+      fill_in :condition_cond_date, with: '8/9/2010'
       fill_in :condition_max_temperature, with: 90
       fill_in :condition_mean_temperature, with: 93
       fill_in :condition_min_temperature, with: 89
@@ -78,7 +78,7 @@ describe 'as a admin' do
 
       click_on "Create Condition"
 
-      expect(page).to have_content "Date: 2010-9-8"
+      expect(page).to have_content "Date: 2010-09-08"
       expect(page).to have_content "Max Temperature: 90"
       expect(page).to have_content "Mean Temperature: 93"
       expect(page).to have_content "Min Temperature: 89"
@@ -86,7 +86,7 @@ describe 'as a admin' do
       expect(page).to have_content "Mean Visibility: 5"
       expect(page).to have_content "Mean Wind Speed: 6"
       expect(page).to have_content "Precipitation: 7"
-      expect(page).to have_content "You have successfully created condition for 2010-9-8"
+      expect(page).to have_content "You have successfully created 2010-09-08 condition"
     end
   end
   describe 'visiting conditions/edit' do
@@ -98,7 +98,7 @@ describe 'as a admin' do
 
       visit edit_admin_condition_path(condition_1)
 
-      fill_in :condition_date, with: '8/10/2010'
+      fill_in :condition_cond_date, with: '8/10/2010'
       fill_in :condition_max_temperature, with: 90
       fill_in :condition_mean_temperature, with: 93
       fill_in :condition_min_temperature, with: 89
@@ -110,7 +110,7 @@ describe 'as a admin' do
       click_on "Update Condition"
 
       expect(current_path).to eq condition_path(condition_1)
-      expect(page).to have_content "Date: 2010-10-8"
+      expect(page).to have_content "Date: 2010-10-08"
       expect(page).to have_content "Max Temperature: 90"
       expect(page).to have_content "Mean Temperature: 93"
       expect(page).to have_content "Min Temperature: 89"
@@ -118,7 +118,7 @@ describe 'as a admin' do
       expect(page).to have_content "Mean Visibility: 5"
       expect(page).to have_content "Mean Wind Speed: 6"
       expect(page).to have_content "Precipitation: 7"
-      expect(page).to have_content "You have successfully updated condition for 2010-10-8"
+      expect(page).to have_content "You have successfully updated condition for 2010-10-08"
     end
   end
   describe 'visiting conditions/index' do

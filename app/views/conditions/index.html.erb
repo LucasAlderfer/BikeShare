@@ -1,12 +1,18 @@
 <h1>Welcome to the conditions index!</h1>
 
 <% @conditions.each do |condition| %>
-  <p>Date: <%= condition.cond_date %></p>
-  <p>Max Temperature: <%= condition.max_temperature %></p>
-  <p>Mean Temperature: <%= condition.mean_temperature %></p>
-  <p>Min Temperature: <%= condition.min_temperature %></p>
-  <p>Mean Humidity: <%= condition.mean_humidity %></p>
-  <p>Mean Visibility: <%= condition.mean_visibility %></p>
-  <p>Mean Wind Speed: <%= condition.mean_wind_speed %></p>
-  <p>Precipitation: <%= condition.precipitation %></p>
+  <div id="condition-<%= condition.id %>">
+    <p>Date: <%= condition.cond_date %></p>
+    <p>Max Temperature: <%= condition.max_temperature %></p>
+    <p>Mean Temperature: <%= condition.mean_temperature %></p>
+    <p>Min Temperature: <%= condition.min_temperature %></p>
+    <p>Mean Humidity: <%= condition.mean_humidity %></p>
+    <p>Mean Visibility: <%= condition.mean_visibility %></p>
+    <p>Mean Wind Speed: <%= condition.mean_wind_speed %></p>
+    <p>Precipitation: <%= condition.precipitation %></p>
+    <% if current_admin? %>
+      <%= button_to "Edit", edit_admin_condition_path(condition), method: :get %>
+      <%= button_to "Delete", admin_condition_path(condition), method: :delete %>
+    <% end %>
+  </div>
 <% end %>
