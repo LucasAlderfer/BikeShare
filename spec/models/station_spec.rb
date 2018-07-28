@@ -31,6 +31,7 @@ describe Station do
     it 'tests all station instance methods' do
       station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
       station_2 = Station.create(name: 'fred', dock_count:4, city:'Arvada', installation_date:'8/8/2010')
+      station_3 = Station.create(name: 'wilma', dock_count:4, city:'Marvada', installation_date:'8/6/2010')
 
       trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
@@ -39,8 +40,9 @@ describe Station do
       trip_5 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Customer", zip_code: 22601)
       trip_6 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_7 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 3, subscription_type: "Subscriber", zip_code: 22207)
+      trip_8 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 3, bike_id: 3, subscription_type: "Subscriber", zip_code: 22207)
 
-      expect(station_1.total_trips_from).to eq(4)
+      expect(station_1.total_trips_from).to eq(5)
       expect(station_1.total_trips_to).to eq(3)
 
       expect(station_1.most_trips_to).to eq(station_2.name) # I figure this will return the entire station object, thoughts?

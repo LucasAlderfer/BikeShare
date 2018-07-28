@@ -5,6 +5,8 @@ context 'as an admin' do
     it 'can see edit and delete buttons for that station' do
       station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
+      trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station_id: 1, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -24,6 +26,8 @@ context 'as an admin' do
       station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
       station_2 = Station.create(name: 'goodbye', dock_count:3, city:'Boulder', installation_date:'8/8/2010')
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
+      trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -100,6 +104,8 @@ context 'as an admin' do
       station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
       station_2 = Station.create(name: 'goodbye', dock_count:3, city:'Boulder', installation_date:'8/8/2010')
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
+      trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+      trip_2 = Trip.create!(duration:9, start_date:'8/9/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
