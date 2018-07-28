@@ -42,15 +42,23 @@ class Station < ApplicationRecord
 
 
   def most_trips_to
-    max = trips_from.group(:end_station_id).count.values.max
-    station = trips_from.group(:end_station_id).count.key(max)
-    Station.find(station).name
+    unless trips_from.count == 0
+      max = trips_from.group(:end_station_id).count.values.max
+      station = trips_from.group(:end_station_id).count.key(max)
+      Station.find(station).name
+    else
+      0
+    end
   end
 
   def most_trips_from
-    max = trips_to.group(:start_station_id).count.values.max
-    station = trips_to.group(:start_station_id).count.key(max)
-    Station.find(station).name
+    unless trips_from.count == 0
+      max = trips_to.group(:start_station_id).count.values.max
+      station = trips_to.group(:start_station_id).count.key(max)
+      Station.find(station).name
+    else
+      0
+    end
   end
 
   def max_trips_date
