@@ -19,6 +19,7 @@
 .byebug_history
 
 /coverage
+/db/csv
 
 # Ignore application configuration
 /config/application.yml
