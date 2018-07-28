@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe 'Admin' do
-  describe 'can edit a trip' do
+  xit 'can edit a trip' do
     station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
     station_2 = Station.create(name: 'asdf', dock_count:2, city:'Denver', installation_date:'8/7/2010')
-    admin = User.create!(username:'jorj', password:'hello', role: 1)
+    admin = User.create!(username:'bob', password:'hello', role: 1)
 
     trip_1 = Trip.create(duration: 34, start_station_id: 1, end_station_id: 1, bike_id: 3, start_date: '8/7/2010', end_date: '8/7/2010', subscription_type: 'Customer', zip_code: 12345)
 
