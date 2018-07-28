@@ -57,12 +57,18 @@ context 'as an admin' do
 
       visit new_admin_station_path
 
-      fill_in :station_name, with: 'hello'
-      fill_in :station_dock_count, with: 2
-      fill_in :station_city, with: 'Denver'
-      fill_in :station_installation_date, with: '8/7/2010'
+      station = Station.new(name: "hello", dock_count: 2, city: "Denver", installation_date: "8/7/2010")
+
+      trip_1 = Trip.create(duration: 45, zip_code: 12345, start_station_id: 1, end_station_id: 1, start_date: "8/7/2010", end_date: "8/8/2010", bike_id: 123, subscription_type: "asdf")
+
+      fill_in :station_name, with: station.name
+      fill_in :station_dock_count, with: station.dock_count
+      fill_in :station_city, with: station.city
+      fill_in :station_installation_date, with: station.installation_date
 
       click_on "Create Station"
+
+
 
       expect(page).to have_content "Station Name: hello"
       expect(page).to have_content "Dock Count: 2"
