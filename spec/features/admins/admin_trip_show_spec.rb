@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Admin' do
-  xit 'visits a trip show page' do
+  it 'visits a trip show page' do
     station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
     station_2 = Station.create(name: 'asdf', dock_count:2, city:'Denver', installation_date:'8/7/2010')
     admin = User.create!(username:'bill', password:'hello', role: 1)
