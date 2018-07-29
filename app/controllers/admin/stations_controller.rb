@@ -5,7 +5,8 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def create
-    @station = Station.new(station_params)
+    params[:station][:installation_date] = Date.strptime(params[:station][:installation_date], '%m/%d/%Y')
+    @station = Station.create(station_params)
     if @station.save
       flash[:success] = "You have successfully created #{@station.name} station"
       redirect_to station_path(@station)
@@ -20,6 +21,7 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def update
+    #TODO conditional logic about date
     @station = Station.find(params[:slug])
     @station.update(station_params)
     if @station.save
