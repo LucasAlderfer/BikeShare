@@ -17,11 +17,11 @@
       <nav>
         <div><p><%= link_to "Home", root_path %></p></div>
         <div class='dashdrop'>
-          <p><button class='dropbtn'>Dashboards</button></p>
+          <p><button class='dropbtn'>Indexes</button></p>
           <div class='droplinks'>
-            <%= link_to 'Stations', '/stations' %>
-            <%= link_to 'Trips', '/trips' %>
-            <%= link_to 'Conditions', '/conditions' %>
+            <%= link_to 'Stations', stations_path %>
+            <%= link_to 'Trips', trips_path %>
+            <%= link_to 'Conditions', conditions_path %>
           </div>
         </div>
         <div><p><%= link_to "Shop", '/bike-shop' %></p></div>
