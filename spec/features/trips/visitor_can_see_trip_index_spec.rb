@@ -35,6 +35,10 @@ describe 'as a visitor' do
       expect(page).to have_content trip_3.bike_id
       expect(page).to have_content trip_3.subscription_type
       expect(page).to have_content trip_3.zip_code
+
+      #added for more thorough admin testing
+      expect(page).to_not have_button("Edit")
+      expect(page).to_not have_button("Delete")
     end
   end
 end

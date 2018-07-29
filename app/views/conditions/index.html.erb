@@ -10,6 +10,9 @@
     <th>Mean Visibility</th>
     <th>Mean Wind Speed</th>
     <th>Precipitation</th>
+    <% if current_admin? %>
+      <th colspan="2">Admin functions</th>
+    <% end %>
   </tr>
   <% @conditions.each do |condition| %>
     <tr>
@@ -21,6 +24,10 @@
       <td><%= condition.mean_visibility %></td>
       <td><%= condition.mean_wind_speed %></td>
       <td><%= condition.precipitation %></td>
+      <% if current_admin? %>
+        <td><%= button_to "Edit", edit_admin_condition_path(condition), method: :get %></td>
+        <td><%= button_to "Delete", admin_condition_path(condition), method: :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

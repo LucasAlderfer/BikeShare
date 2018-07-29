@@ -1,5 +1,7 @@
-<h1>Welcome to the Trips Index!</h1>
-
+<h1>Welcome to the Trips Index!
+<% if current_admin? %>
+  <%= button_to "Create a New Trip", new_admin_trip_path, method: :get %>
+<% end %></h1>
 
 <%= will_paginate @trips %>
 <% @trips.each do |trip| %>
@@ -12,5 +14,9 @@
     <p>Bike ID: <%= trip.bike_id %></p>
     <p>Subscription type: <%= trip.subscription_type %></p>
     <p>Zip Code: <%= trip.zip_code %></p>
+    <% if current_admin? %>
+      <%= button_to "Edit", edit_admin_trip_path(trip), method: :get %>
+      <%= button_to "Delete", admin_trip_path(trip), method: :delete %>
+    <% end %>
   </div>
 <% end %>

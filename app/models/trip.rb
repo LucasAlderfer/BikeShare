@@ -25,11 +25,11 @@ class Trip < ApplicationRecord
   end
 
   def self.station_start_max
-    station_id = Trip.select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from desc').limit(1).first.start_station.name
+    select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from desc').limit(1).first.start_station.name
   end
 
   def self.station_end_max
-    station_id = Trip.select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from').limit(1).first.start_station.name
+    select('start_station_id, count(start_station_id) as trips_from').group(:start_station_id).order('trips_from').limit(1).first.start_station.name
   end
 
   def self.number_of_rides_per_month
@@ -41,19 +41,19 @@ class Trip < ApplicationRecord
   end
 
   def self.bike_with_most_rides
-    group(:bike_id).count(:bike_id).max[0]
+    select('trips.bike_id, count(bike_id) as count').group(:bike_id).order('count desc').first.bike_id
   end
 
   def self.most_rides_on_one_bike
-    group(:bike_id).count(:bike_id).max[1]
+    select('trips.bike_id, count(bike_id) as count').group(:bike_id).order('count desc').first.count
   end
 
   def self.bike_with_least_rides
-    group(:bike_id).count(:bike_id).min[0]
+    select('trips.bike_id, count(bike_id) as count').group(:bike_id).order('count').first.bike_id
   end
 
   def self.least_rides_on_one_bike
-    group(:bike_id).count(:bike_id).min[1]
+    select('trips.bike_id, count(bike_id) as count').group(:bike_id).order('count').first.count
   end
 
   def self.subscriber_count

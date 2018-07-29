@@ -8,3 +8,7 @@
 <p>Bike ID: <%= @trip.bike_id %></p>
 <p>Subscription type: <%= @trip.subscription_type %></p>
 <p>Zip Code: <%= @trip.zip_code %></p>
+<% if current_admin? %>
+  <%= button_to "Edit", edit_admin_trip_path(@trip), method: :get %>
+  <%= button_to "Delete", admin_trip_path(@trip), method: :delete %>
+<% end %>
