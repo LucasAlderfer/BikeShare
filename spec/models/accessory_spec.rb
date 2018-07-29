@@ -20,4 +20,15 @@ describe Accessory do
       expect(accessory).to be_valid
     end
   end
+  describe 'uniqueness of title' do
+    product_1 = Accessory.create(title: "asdf", price: 23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
+    product_2 = Accessory.create(title: "asdf", price: 23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
+
+    expect(product_2).to_not be_valid
+  end
+  describe "price can't be negative" do
+    product_1 = Accessory.create(title: "asdf", price: -23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
+
+    expect(product_1).to_not be_valid
+  end
 end
