@@ -43,9 +43,7 @@ class Station < ApplicationRecord
 
   def most_trips_to
     unless trips_from.count == 0
-      max = trips_from.group(:end_station_id).count.values.max
-      station = trips_from.group(:end_station_id).count.key(max)
-      Station.find(station).name
+      trips_from.select('trips.end_station_id, count(end_station_id) as count').joins(:end_station).group(:end_station_id).order('count desc').first.end_station.name
     else
       0
     end
@@ -53,30 +51,34 @@ class Station < ApplicationRecord
 
   def most_trips_from
     unless trips_from.count == 0
-      max = trips_to.group(:start_station_id).count.values.max
-      station = trips_to.group(:start_station_id).count.key(max)
-      Station.find(station).name
+      trips_from.select('trips.end_station_id, count(end_station_id) as count').joins(:end_station).group(:end_station_id).order('count').first.end_station.name
     else
       0
     end
   end
 
   def max_trips_date
-    # trips_from.group(:start_date).count.max_by{|k, v| v}[0]
-    max = trips_from.group(:start_date).count.values.max
-    trips_from.group(:start_date).count.key(max)
+    unless trips_from.count == 0
+      trips_from.select('trips.start_date, count(start_date) as count').group(:start_date).order('count desc').first.start_date
+    else
+      0
+    end
   end
 
   def most_common_zip
-    # trips_from.group(:start_date).count.max_by{|k, v| v}[0]
-    max = trips_from.group(:zip_code).count.values.max
-    trips_from.group(:zip_code).count.key(max)
+    unless trips_from.count == 0
+      trips_from.select('trips.zip_code, count(zip_code) as count').group(:zip_code).order('count desc').first.zip_code
+    else
+      0
+    end
   end
 
   def most_frequent_bike
-    # trips_from.group(:start_date).count.max_by{|k, v| v}[0]
-    max = trips_from.group(:bike_id).count.values.max
-    trips_from.group(:bike_id).count.key(max)
+    unless trips_from.count == 0
+      trips_from.select('trips.bike_id, count(bike_id) as count').group(:bike_id).order('count desc').first.bike_id
+    else
+      0
+    end
   end
 
   private

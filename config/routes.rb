@@ -35,6 +35,10 @@ Rails.application.routes.draw do
 
   resources :conditions, only: [:index, :show]
 
+  namespace :admin do
+    resources :conditions, only: [:edit, :destroy, :new, :create, :update]
+  end
+
   get '/conditions-dashboard', to: 'conditions#dashboard'
 
   resources :trips, only: [:index, :show]
