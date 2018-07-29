@@ -1,0 +1,42 @@
+.index-title {
+  padding-left: 30px;
+}
+
+table {
+  width: 90%;
+  margin-left: 30px;
+}
+
+table, th {
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid black;
+  padding-left: 10px;
+  min-width: 100px;
+}
+
+th {
+  text-align: center;
+  padding-left: 10px;
+  background-color: lightgray;
+}
+
+tr {
+  height: 50px;
+}
+
+tr:hover {
+  background-color: lightgray;
+}
+
+table a {
+  text-decoration: none;
+  color: black;
+}
+
+table a:hover {
+  color: red;
+}

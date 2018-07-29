@@ -1,18 +1,33 @@
-<h1>Welcome to the conditions index!</h1>
+<h1 class='index-title'>Welcome to the conditions index!</h1>
 
-<% @conditions.each do |condition| %>
-  <div id="condition-<%= condition.id %>">
-    <p>Date: <%= condition.cond_date %></p>
-    <p>Max Temperature: <%= condition.max_temperature %></p>
-    <p>Mean Temperature: <%= condition.mean_temperature %></p>
-    <p>Min Temperature: <%= condition.min_temperature %></p>
-    <p>Mean Humidity: <%= condition.mean_humidity %></p>
-    <p>Mean Visibility: <%= condition.mean_visibility %></p>
-    <p>Mean Wind Speed: <%= condition.mean_wind_speed %></p>
-    <p>Precipitation: <%= condition.precipitation %></p>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Max Temperature</th>
+    <th>Mean Temperature</th>
+    <th>Min Temperature</th>
+    <th>Mean Humidity</th>
+    <th>Mean Visibility</th>
+    <th>Mean Wind Speed</th>
+    <th>Precipitation</th>
     <% if current_admin? %>
-      <%= button_to "Edit", edit_admin_condition_path(condition), method: :get %>
-      <%= button_to "Delete", admin_condition_path(condition), method: :delete %>
+      <th colspan="2">Admin functions</th>
     <% end %>
-  </div>
-<% end %>
+  </tr>
+  <% @conditions.each do |condition| %>
+    <tr>
+      <td><%= condition.cond_date %></td>
+      <td><%= condition.max_temperature %></td>
+      <td><%= condition.mean_temperature %></td>
+      <td><%= condition.min_temperature %></td>
+      <td><%= condition.mean_humidity %></td>
+      <td><%= condition.mean_visibility %></td>
+      <td><%= condition.mean_wind_speed %></td>
+      <td><%= condition.precipitation %></td>
+      <% if current_admin? %>
+        <td><%= button_to "Edit", edit_admin_condition_path(condition), method: :get %></td>
+        <td><%= button_to "Delete", admin_condition_path(condition), method: :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
