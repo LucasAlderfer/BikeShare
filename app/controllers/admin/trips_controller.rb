@@ -33,6 +33,13 @@ class Admin::TripsController < Admin::BaseController
     end
   end
 
+  def destroy
+    trip = Trip.find(params[:id])
+    trip.destroy
+    flash[:success] = "You have successfully deleted Trip starting on #{trip.start_date} station"
+    redirect_to trips_path
+  end
+
   private
 
   def trip_params
