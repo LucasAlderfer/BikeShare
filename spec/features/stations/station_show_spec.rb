@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'as a user' do
   context 'visits /stations/:id' do
-    it 'sees station show page' do
+    xit 'sees station show page' do
 
       station_1 = Station.create(name: 'hello dood', dock_count:2, city:'Denver', installation_date:'8/7/2010')
       station_2 = Station.create(name: 'world', dock_count: 3, city:'Chicago', installation_date:'8/7/2010')

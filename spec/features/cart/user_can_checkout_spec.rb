@@ -3,6 +3,12 @@ require 'rails_helper'
 describe 'as a reigistered user checking out' do
   it 'can add things to cart and checkout' do
     user = User.create(username: 'jorj', password: 'password')
+    first_name = 'Jorj'
+    last_name = 'Castanza'
+    street = '123 Main St'
+    city = 'Denver'
+    state = 'CO'
+    zip = 12345
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -24,6 +30,16 @@ describe 'as a reigistered user checking out' do
     expect(page).to have_content('Cart Count: 2')
     #we've already tested that all info is present on this page so no need to test again
     click_button 'Checkout'
+
+    expect(current_path).to eq(new_user_order_path(user))
+
+    fill_in :order_first_name, with: first_name
+    fill_in :order_last_name, with: last_name
+    fill_in :order_street, with: street
+    fill_in :order_city, with: city
+    fill_in :order_state, with: state
+    fill_in :order_zip, with: zip
+    click_on 'Create Order'
 
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content("Successfully submitted your order totaling $#{total}")

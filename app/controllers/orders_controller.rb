@@ -3,6 +3,10 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def new
+    @order = Order.new
+  end
+
   def create
     @order = current_user.orders.create
     session[:cart] = nil
