@@ -16,8 +16,13 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.contents[params[:id]] = params[:new_quantity].to_i
-    redirect_to cart_path
+    if params[:new_quantity].to_i > 0
+      @cart.contents[params[:id]] = params[:new_quantity].to_i
+      redirect_to cart_path
+    else
+      flash[:warning] = "Invalid quantity"
+      redirect_to cart_path
+    end
   end
 
   def destroy
