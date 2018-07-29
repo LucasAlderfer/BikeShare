@@ -6,9 +6,6 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def create
-    # params[:trip][:start_station_id] = params[:trip][:start_station_id].to_i
-    # params[:trip][:end_station_id] = params[:trip][:end_station_id].to_i
-    # binding.pry
     @trip = Trip.create!(trip_params)
     if @trip.save
       flash[:success] = "You have successfully created a trip starting on#{@trip.start_date}"
@@ -16,6 +13,23 @@ class Admin::TripsController < Admin::BaseController
     else
       flash[:notice] = 'Trip was not properly created'
       render :new
+    end
+  end
+
+  def edit
+    @trip = Trip.find(params[:id])
+  end
+
+  def update
+    @trip = Trip.find(params[:id])
+    @trip.update!(trip_params)
+    if @trip.save
+      # binding.pry
+      flash[:success] = "You have successfully updated at trip starting on #{@trip.start_date}"
+      redirect_to trip_path(@trip)
+    else
+      flash[:notice] = "Trip was not properly updated"
+      render :edit
     end
   end
 
