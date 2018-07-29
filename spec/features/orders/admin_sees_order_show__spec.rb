@@ -22,7 +22,7 @@ describe 'admin sees individual order show page' do
     expect(page).to have_content("Street Address: #{order_1.street}")
     expect(page).to have_content("City/State/Zip: #{order_1.city}, #{order_1.state} #{order_1.zip}")
 
-    expect(page).to have_selector(order_acc1.accessory.title)
+    find_link(order_acc1.accessory.title).visible?
     expect(page).to have_content(order_acc1.quantity)
     expect(page).to have_content(order_acc1.subtotal)
     expect(page).to have_content(order_1.total)
