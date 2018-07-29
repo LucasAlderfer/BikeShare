@@ -40,7 +40,3 @@ table a {
 table a:hover {
   color: red;
 }
-
-td .button_to:hover {
-  color: red;
-}

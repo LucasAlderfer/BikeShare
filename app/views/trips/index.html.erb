@@ -1,22 +1,38 @@
-<h1>Welcome to the Trips Index!
+<h1 class='index-title'>Welcome to the Trips Index!
 <% if current_admin? %>
   <%= button_to "Create a New Trip", new_admin_trip_path, method: :get %>
 <% end %></h1>
-
 <%= will_paginate @trips %>
-<% @trips.each do |trip| %>
-  <div id="trip-<%=trip.id%>">
-    <p>Duration: <%= trip.duration %></p>
-    <p>Start date: <%= trip.start_date %></p>
-    <p>Starting station: <%= trip.start_station.name %></p>
-    <p>End Date: <%= trip.end_date %></p>
-    <p>Ending station: <%= trip.end_station.name %></p>
-    <p>Bike ID: <%= trip.bike_id %></p>
-    <p>Subscription type: <%= trip.subscription_type %></p>
-    <p>Zip Code: <%= trip.zip_code %></p>
+<table>
+  <tr>
+    <th>Duration</th>
+    <th>Start Date</th>
+    <th>Starting Station</th>
+    <th>End Date</th>
+    <th>Ending Station</th>
+    <th>Bike ID</th>
+    <th>Subscription Type</th>
+    <th>Zip Code</th>
     <% if current_admin? %>
-      <%= button_to "Edit", edit_admin_trip_path(trip), method: :get %>
-      <%= button_to "Delete", admin_trip_path(trip), method: :delete %>
+      <th colspan="2">Admin functions</th>
     <% end %>
-  </div>
-<% end %>
+  </tr>
+  <% @trips.each do |trip| %>
+    <tr>
+      <div id="trip-<%=trip.id%>">
+        <td><%= trip.duration %></td>
+        <td><%= trip.start_date %></td>
+        <td><%= trip.start_station.name %></td>
+        <td><%= trip.end_date %></td>
+        <td><%= trip.end_station.name %></td>
+        <td><%= trip.bike_id %></td>
+        <td><%= trip.subscription_type %></td>
+        <td><%= trip.zip_code %></td>
+        <% if current_admin? %>
+          <td><%= button_to "Edit", edit_admin_trip_path(trip), method: :get %></td>
+          <td><%= button_to "Delete", admin_trip_path(trip), method: :delete %></td>
+        <% end %>
+      </div>
+    </tr>
+  <% end %>
+</table>

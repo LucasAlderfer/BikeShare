@@ -1,6 +1,8 @@
 <% @accessories.each do |accessory| %>
   <div id='accessory-<%= accessory.id %>'>
-    <%= accessory.title %>
+    <p><%= accessory.title %></p>
+    <p>$<%= accessory.price %>.00</p>
+    <%= image_tag(accessory.image, size: '200x200') %>
      <%if accessory.status == 0 %>
       <%= button_to "Add to Cart", carts_path(accessory_id: accessory.id) %>
     <% else %>

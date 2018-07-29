@@ -1,5 +1,8 @@
-<h1 class='index-title'>Welcome to the Conditions Index!</h1>
-
+<h1 class='index-title'>Welcome to the Conditions Index!
+<% if current_admin? %>
+  <%= button_to "Create a New Condition", new_admin_condition_path, method: :get %>
+<% end %></h1>
+<%= will_paginate @conditions %>
 <table>
   <tr>
     <th>Date</th>
