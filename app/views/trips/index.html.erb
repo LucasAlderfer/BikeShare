@@ -1,4 +1,7 @@
-<h1>Welcome to the trips index!</h1>
+<h1>Welcome to the trips index!
+<% if current_admin? %>
+  <%= button_to "Create a New Trip", new_admin_trip_path, method: :get %>
+<% end %></h1>
 
 <%= will_paginate @trips %>
 <% @trips.each do |trip| %>
