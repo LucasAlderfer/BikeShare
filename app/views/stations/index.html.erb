@@ -1,4 +1,7 @@
-<h1 class='index-title'>Welcome to the stations index!</h1>
+<h1 class='index-title'>Welcome to the Stations Index!
+  <% if current_admin? %>
+    <%= button_to 'Create a New Station', new_admin_station_path, method: :get %>
+  <% end %></h1>
 
 <table>
   <tr>
