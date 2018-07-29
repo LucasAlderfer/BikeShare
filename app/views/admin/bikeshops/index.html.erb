@@ -1,0 +1,18 @@
+<% @accessories.each do |accessory| %>
+  <div id="accessory-<%=accessory.id%>">
+    <p>Title: <%= accessory.title %></p>
+    <p>Description: <%= accessory.description %></p>
+    <p>Price: $<%= accessory.price %></p>
+    <p>Status: <%= accessory.status %></p>
+    <%= image_tag(accessory.image, size: '200x200') %>
+    <%= button_to "Edit", edit_admin_bikeshop_path(accessory), method: :get %>
+    <%= form_tag(admin_bikeshop_path(accessory), method: "patch") do %>
+      <% if accessory.status == 'Active' %>
+        <%= hidden_field_tag :status, 'Retired' %>
+      <% else %>
+        <%= hidden_field_tag :status, 'Active' %>
+      <% end %>
+      <%= submit_tag "Change Status" %>
+    <% end %>
+  </div>
+<% end %>

@@ -21,14 +21,18 @@ describe Accessory do
     end
   end
   describe 'uniqueness of title' do
-    product_1 = Accessory.create(title: "asdf", price: 23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
-    product_2 = Accessory.create(title: "asdf", price: 23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
+    it 'has a unique title' do
+      product_1 = Accessory.create(title: "asdf", price: 23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
+      product_2 = Accessory.create(title: "asdf", price: 23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
 
-    expect(product_2).to_not be_valid
+      expect(product_2).to_not be_valid
+    end
   end
   describe "price can't be negative" do
-    product_1 = Accessory.create(title: "asdf", price: -23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
+    it 'cannot have negative price' do
+      product_1 = Accessory.create(title: "asdf", price: -23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
 
-    expect(product_1).to_not be_valid
+      expect(product_1).to_not be_valid
+    end
   end
 end

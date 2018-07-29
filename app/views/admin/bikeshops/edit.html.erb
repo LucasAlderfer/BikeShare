@@ -1,0 +1,18 @@
+<%= form_for [:admin, @accessory], url: admin_bikeshop_path(@accessory), method: :put do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price, step: 0.01 %>
+
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+
+  <%= f.label :status %>
+  <%= f.select :status, ['Active', 'Retired'] %>
+
+  <%= f.submit %>
+<% end %>
