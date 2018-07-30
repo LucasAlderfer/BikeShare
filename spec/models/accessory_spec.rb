@@ -9,7 +9,6 @@ describe Accessory do
     it {should validate_presence_of(:image)}
   end
   describe 'relationships' do
-    #TODO
     it {should have_many(:order_accessories)}
     it {should have_many(:orders).through(:order_accessories)}
   end

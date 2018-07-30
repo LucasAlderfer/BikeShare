@@ -8,10 +8,9 @@ class Order < ApplicationRecord
 
   enum status: ['ordered', 'completed', 'paid', 'cancelled']
 
-  def total #TODO refactor!
-    order_accessories.inject(0) do |sum, ord_acc|
-      sum + ord_acc.subtotal
-    end
+  def total
+    order_accessories.joins(:accessory)
+                     .sum('quantity * price')
   end
 
 end
