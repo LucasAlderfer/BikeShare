@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   patch '/cart', to: 'carts#update'
 
+  get '/admin/bike-shop', to: 'admin/bikeshops#index'
 
   resources :users, only: [:new, :create, :show, :update, :edit] do
     resources :orders, only: [:show, :create]
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
     resources :stations, param: :slug, only: [:edit, :destroy, :new, :create, :update]
     resources :trips, only: [:edit, :destroy, :new, :create, :update]
     resources :conditions, only: [:edit, :destroy, :new, :create, :update]
-    resources :bikeshops, only: [:index, :edit, :update, :new, :create]
+    resources :bikeshops, only: [:edit, :update, :new, :create]
   end
 
   resources :conditions, only: [:index, :show]

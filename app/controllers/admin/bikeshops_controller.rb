@@ -12,7 +12,7 @@ class Admin::BikeshopsController < ApplicationController
     @accessory = Accessory.create(accessory_params)
     if @accessory.save
       flash[:success] = "You have successfully created new accessory #{@accessory.title}"
-      redirect_to admin_bikeshops_path
+      redirect_to '/admin/bike-shop'
     else
       flash[:notice] = "Accessory was not properly created"
       render :new
@@ -27,12 +27,12 @@ class Admin::BikeshopsController < ApplicationController
     @accessory = Accessory.find(params[:id])
     if params[:commit] == "Change Status"
       @accessory.update(status:params[:status])
-      redirect_to admin_bikeshops_path
+      redirect_to '/admin/bike-shop'
     else
       @accessory.update(accessory_params)
       if @accessory.save
         flash[:success] = "You have successfully updated accessory for #{@accessory.title}"
-        redirect_to admin_bikeshops_path
+        redirect_to '/admin/bike-shop'
       else
         flash[:notice] = "Accessory was not properly updated"
         render :edit

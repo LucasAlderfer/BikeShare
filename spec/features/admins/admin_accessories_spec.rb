@@ -17,7 +17,7 @@ describe 'Admin' do
 
       click_link("Accessories")
 
-      expect(current_path).to eq(admin_bikeshops_path) # /admin/bike-shop
+      expect(current_path).to eq('/admin/bike-shop') # /admin/bike-shop
       expect(page).to have_content("Title: #{product_1.title}")
       expect(page).to have_content("Description: #{product_1.description}")
       expect(page).to have_content("Price: $#{product_1.price}")
@@ -49,7 +49,7 @@ describe 'Admin' do
       select "Active", from: :accessory_status
       click_on("Update Accessory")
 
-      expect(current_path).to eq(admin_bikeshops_path)
+      expect(current_path).to eq('/admin/bike-shop')
       within("#accessory-#{product_1.id}") do
         expect(page).to have_content("Title: sdffsdkjh")
         expect(page).to have_content("Description: fskjdf")
@@ -71,7 +71,7 @@ describe 'Admin' do
       fill_in :accessory_image, with: "http://placekitten.com/200/200"
       click_on("Create Accessory")
 
-      expect(current_path).to eq(admin_bikeshops_path)
+      expect(current_path).to eq('/admin/bike-shop')
       expect(page).to have_content("Title: sdf")
       expect(page).to have_content("Price: $45.23")
       expect(page).to have_content("Description: dsfkjhds")
