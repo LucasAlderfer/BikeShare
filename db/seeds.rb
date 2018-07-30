@@ -64,3 +64,5 @@ end
 
 
 ActiveRecord::Base.connection.reset_pk_sequence!('stations')
+ActiveRecord::Base.connection.reset_pk_sequence!('trips')
+ActiveRecord::Base.connection.reset_pk_sequence!('conditions')
