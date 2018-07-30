@@ -17,9 +17,9 @@ describe 'Admin' do
 
 
       # probably not the best way to test this data shows on the page, but it's already tested for users, so it feels redundant
-      expect(page).to have_content("Subscription type: #{trip_1.subscription_type}")
-      expect(page).to have_content("Subscription type: #{trip_2.subscription_type}")
-      expect(page).to have_content("Subscription type: #{trip_3.subscription_type}")
+      expect(page).to have_content("#{trip_1.subscription_type}")
+      expect(page).to have_content("#{trip_2.subscription_type}")
+      expect(page).to have_content("#{trip_3.subscription_type}")
 
       within("#trip-#{trip_1.id}") do
         expect(page).to have_button("Edit")

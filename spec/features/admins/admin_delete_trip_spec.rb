@@ -17,13 +17,13 @@ describe 'Admin' do
     within("#trip-#{trip_1.id}") do
       click_button("Delete")
     end
-
+    
     expect(current_path).to eq(trips_path)
 
-    expect(page).to_not have_content("Subscription type: #{trip_1.subscription_type}")
+    expect(page).to_not have_content("#{trip_1.subscription_type}")
     expect(page).to_not have_selector("#trip-#{trip_1.id}")
     expect(page).to have_selector("#trip-#{trip_2.id}")
-    expect(page).to have_content("Subscription type: #{trip_2.subscription_type}")
-    expect(page).to have_content("Subscription type: #{trip_3.subscription_type}")
+    expect(page).to have_content("#{trip_2.subscription_type}")
+    expect(page).to have_content("#{trip_3.subscription_type}")
   end
 end

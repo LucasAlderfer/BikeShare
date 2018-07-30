@@ -68,16 +68,14 @@ context 'as an admin' do
       fill_in :station_name, with: station.name
       fill_in :station_dock_count, with: station.dock_count
       fill_in :station_city, with: station.city
-      fill_in :station_installation_date, with: station.installation_date
+      fill_in :station_installation_date, with: "8/7/2010"
 
       click_on "Create Station"
-
-
 
       expect(page).to have_content "Station Name: hello"
       expect(page).to have_content "Dock Count: 2"
       expect(page).to have_content "City: Denver"
-      expect(page).to have_content "Installation Date: 2010-07-08"
+      expect(page).to have_content "Installation Date: 2010-08-07"
       expect(page).to have_content "You have successfully created hello station"
     end
   end
