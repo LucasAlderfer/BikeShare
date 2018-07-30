@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180729195557) do
     t.integer "mean_humidity"
     t.integer "mean_visibility"
     t.integer "mean_wind_speed"
-    t.integer "precipitation"
+    t.decimal "precipitation"
   end
 
   create_table "order_accessories", force: :cascade do |t|
