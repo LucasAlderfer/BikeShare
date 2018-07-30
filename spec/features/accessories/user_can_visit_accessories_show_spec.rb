@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'visiting accessory_path' do
   context 'as a visitor' do
     it 'shows all accessory information' do
-      accessory_1 = Accessory.create!(title: 'thing1', description: 'description', price: 4, status: 0, image: 'image.jpg')
-      accessory_2 = Accessory.create!(title: 'asdfkjh', description: 'sadfkjsd', price: 4, status: 0, image: 'image.jpg')
+      accessory_1 = Accessory.create!(title: 'thing1', description: 'description', price: 4.5, status: 0, image: 'image.jpg')
+      accessory_2 = Accessory.create!(title: 'asdfkjh', description: 'sadfkjsd', price: 4.5, status: 0, image: 'image.jpg')
 
       visit accessory_path(accessory_1)
 
