@@ -19,7 +19,9 @@
     </div>
   <% end %>
   <p>Total: <%= @cart.total %></p>
-  <% if current_user %> <!-- TODO visitor checkout should redirect to login -->
+  <% if current_user %>
     <p><%= button_to 'Checkout', new_user_order_path(current_user), method: :get %></p>
+  <% else %>
+    <p><%= button_to 'Checkout', login_path %>
   <% end %>
 </div>

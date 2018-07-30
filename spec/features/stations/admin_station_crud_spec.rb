@@ -121,7 +121,7 @@ context 'as an admin' do
 
       expect(current_path).to eq stations_path
       expect(page).to have_content "#{station_2.name}"
-      # TODO expect(page).to_not have_content "#{station_1.name}"
+      expect(page).to_not have_content "#{station_1.city}" # a flash message appears showing the name of the station, even though it was deleted
       expect(page).to have_content "You have successfully deleted #{station_1.name} station"
     end
   end

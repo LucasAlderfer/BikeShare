@@ -44,6 +44,5 @@ describe 'as a reigistered user checking out' do
     expect(current_path).to eq('/dashboard')
     expect(page).to have_content("Successfully submitted your order totaling $#{total}")
     expect(page).to have_content('Cart Count: 0')
-    #TODO need to add conditional on dashboard page about only listing orders if there are any to list
   end
 end

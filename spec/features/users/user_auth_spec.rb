@@ -15,15 +15,13 @@ describe 'visiting /' do
       expect(page).to have_content "The page you were looking for doesn't exist"
       # expect(page).to have_link "Log In" commented out until nav is working
     end
-    # TODO: skipped until cart page is up
-    xit 'cannot checkout without logging in' do
+    it 'cannot checkout without logging in' do
 
       visit cart_path
 
       click_on 'Checkout'
 
-      exepect(current_path).to eq login/path
-      expect(page).to have_content 'Must be logged in to checkout'
+      expect(current_path).to eq login_path
     end
     it 'cannot register as an admin' do
       visit login_path
