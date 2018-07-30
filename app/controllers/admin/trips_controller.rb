@@ -24,8 +24,7 @@ class Admin::TripsController < Admin::BaseController
     @trip = Trip.find(params[:id])
     @trip.update!(trip_params)
     if @trip.save
-      # binding.pry
-      flash[:success] = "You have successfully updated at trip starting on #{@trip.start_date}"
+      flash[:success] = "You have successfully updated a trip starting on #{@trip.start_date}"
       redirect_to trip_path(@trip)
     else
       flash[:notice] = "Trip was not properly updated"

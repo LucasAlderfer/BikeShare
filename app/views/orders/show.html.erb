@@ -6,8 +6,12 @@
   <p>Status updated: <%= @order.updated_at %></p>
 <% end %>
 
+<p>Name: <%= @order.first_name %> <%= @order.last_name %></p>
+<p>Street Address: <%= @order.street %></p>
+<p>City/State/Zip: <%= @order.city %>, <%= @order.state %> <%= @order.zip %></p>
+
 <% @order.order_accessories.each do |ord_acc| %>
-  <%= ord_acc.accessory.title %>
+  <%= link_to ord_acc.accessory.title, accessory_path(ord_acc.accessory) %>
   Quantity: <%= ord_acc.quantity %>
   Subtotal: <%= ord_acc.subtotal %><br>
 <% end %>

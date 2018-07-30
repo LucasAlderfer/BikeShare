@@ -24,4 +24,22 @@ describe Order do
       expect(order_1.total).to eq(expected)
     end
   end
+  context 'Class Methods' do
+    it 'should give counts of orders by status' do
+      user = User.create(username: "asdf", password: "asdf")
+      order_1 = user.orders.create(status: 0)
+      order_2 = user.orders.create(status: 0)
+      order_3 = user.orders.create(status: 1)
+      order_4 = user.orders.create(status: 2)
+      order_5 = user.orders.create(status: 2)
+      order_6 = user.orders.create(status: 2)
+      order_7 = user.orders.create(status: 3)
+      order_8 = user.orders.create(status: 3)
+
+      expect(Order.cnt_ordered).to eq(2)
+      expect(Order.cnt_completed).to eq(1)
+      expect(Order.cnt_paid).to eq(3)
+      expect(Order.cnt_cancelled).to eq(2)
+    end
+  end
 end

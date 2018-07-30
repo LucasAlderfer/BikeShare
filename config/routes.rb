@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/admin/bike-shop', to: 'admin/bikeshops#index'
 
   resources :users, only: [:new, :create, :show, :update, :edit] do
-    resources :orders, only: [:show, :create]
+    resources :orders, only: [:show, :create, :new]
   end
 
   resources :stations, param: :slug, only: [:index, :show]
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :trips, only: [:edit, :destroy, :new, :create, :update]
     resources :conditions, only: [:edit, :destroy, :new, :create, :update]
     resources :bikeshops, only: [:edit, :update, :new, :create]
+    resources :orders, only: [:update]
   end
 
   resources :conditions, only: [:index, :show]
