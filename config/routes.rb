@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stations, param: :slug, only: [:edit, :destroy, :new, :create, :update]
     resources :trips, only: [:edit, :destroy, :new, :create, :update]
+    resources :orders, only: [:update]
   end
 
   resources :conditions, only: [:index, :show]
