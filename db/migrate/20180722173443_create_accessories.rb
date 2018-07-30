@@ -3,7 +3,7 @@ class CreateAccessories < ActiveRecord::Migration[5.1]
     create_table :accessories do |t|
       t.string :title
       t.string :description
-      t.integer :price
+      t.decimal :price
       t.integer :status, default: 0
       t.string :image
     end

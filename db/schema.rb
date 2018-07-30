@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180729195557) do
   create_table "accessories", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "price"
+    t.decimal "price"
     t.integer "status", default: 0
     t.string "image"
   end

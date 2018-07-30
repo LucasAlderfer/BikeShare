@@ -3,6 +3,7 @@
   <%= link_to "Edit Profile", edit_user_path(current_user) %>
 <% end %>
 
+
 <p>Number of orders that are:</p>
 <ul>
   <li>Ordered: <%= @ordered %></li>
@@ -10,6 +11,9 @@
   <li>Paid: <%= @paid %></li>
   <li>Cancelled: <%= @cancelled %></li>
 </ul>
+
+<%= link_to "Accessories", admin_bikeshops_path %>
+
 
 <p>Choose which orders to view:
   <%= link_to "All", admin_dashboard_path %>

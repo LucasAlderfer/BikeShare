@@ -11,31 +11,27 @@ describe 'as a admin' do
 
       visit conditions_path
 
-      within "#condition-#{condition_1.id}" do
-        expect(page).to have_content "Date: #{condition_1.cond_date}"
-        expect(page).to have_content "Max Temperature: #{condition_1.max_temperature}"
-        expect(page).to have_content "Mean Temperature: #{condition_1.mean_temperature}"
-        expect(page).to have_content "Min Temperature: #{condition_1.min_temperature}"
-        expect(page).to have_content "Mean Humidity: #{condition_1.mean_humidity}"
-        expect(page).to have_content "Mean Visibility: #{condition_1.mean_visibility}"
-        expect(page).to have_content "Mean Wind Speed: #{condition_1.mean_wind_speed}"
-        expect(page).to have_content "Precipitation: #{condition_1.precipitation}"
-        expect(page).to have_button 'Edit'
-        expect(page).to have_button 'Delete'
-      end
+      expect(page).to have_content "#{condition_1.cond_date}"
+      expect(page).to have_content "#{condition_1.max_temperature}"
+      expect(page).to have_content "#{condition_1.mean_temperature}"
+      expect(page).to have_content "#{condition_1.min_temperature}"
+      expect(page).to have_content "#{condition_1.mean_humidity}"
+      expect(page).to have_content "#{condition_1.mean_visibility}"
+      expect(page).to have_content "#{condition_1.mean_wind_speed}"
+      expect(page).to have_content "#{condition_1.precipitation}"
+      expect(page).to have_button 'Edit'
+      expect(page).to have_button 'Delete'
 
-      within "#condition-#{condition_2.id}" do
-        expect(page).to have_content "Date: #{condition_2.cond_date}"
-        expect(page).to have_content "Max Temperature: #{condition_2.max_temperature}"
-        expect(page).to have_content "Mean Temperature: #{condition_2.mean_temperature}"
-        expect(page).to have_content "Min Temperature: #{condition_2.min_temperature}"
-        expect(page).to have_content "Mean Humidity: #{condition_2.mean_humidity}"
-        expect(page).to have_content "Mean Visibility: #{condition_2.mean_visibility}"
-        expect(page).to have_content "Mean Wind Speed: #{condition_2.mean_wind_speed}"
-        expect(page).to have_content "Precipitation: #{condition_2.precipitation}"
-        expect(page).to have_button 'Edit'
-        expect(page).to have_button 'Delete'
-      end
+      expect(page).to have_content "#{condition_2.cond_date}"
+      expect(page).to have_content "#{condition_2.max_temperature}"
+      expect(page).to have_content "#{condition_2.mean_temperature}"
+      expect(page).to have_content "#{condition_2.min_temperature}"
+      expect(page).to have_content "#{condition_2.mean_humidity}"
+      expect(page).to have_content "#{condition_2.mean_visibility}"
+      expect(page).to have_content "#{condition_2.mean_wind_speed}"
+      expect(page).to have_content "#{condition_2.precipitation}"
+      expect(page).to have_button 'Edit'
+      expect(page).to have_button 'Delete'
     end
   end
   describe 'visiting conditions/show' do
@@ -47,14 +43,14 @@ describe 'as a admin' do
 
       visit condition_path(condition_1)
 
-      expect(page).to have_content "Date: #{condition_1.cond_date}"
-      expect(page).to have_content "Max Temperature: #{condition_1.max_temperature}"
-      expect(page).to have_content "Mean Temperature: #{condition_1.mean_temperature}"
-      expect(page).to have_content "Min Temperature: #{condition_1.min_temperature}"
-      expect(page).to have_content "Mean Humidity: #{condition_1.mean_humidity}"
-      expect(page).to have_content "Mean Visibility: #{condition_1.mean_visibility}"
-      expect(page).to have_content "Mean Wind Speed: #{condition_1.mean_wind_speed}"
-      expect(page).to have_content "Precipitation: #{condition_1.precipitation}"
+      expect(page).to have_content "#{condition_1.cond_date}"
+      expect(page).to have_content "#{condition_1.max_temperature}"
+      expect(page).to have_content "#{condition_1.mean_temperature}"
+      expect(page).to have_content "#{condition_1.min_temperature}"
+      expect(page).to have_content "#{condition_1.mean_humidity}"
+      expect(page).to have_content "#{condition_1.mean_visibility}"
+      expect(page).to have_content "#{condition_1.mean_wind_speed}"
+      expect(page).to have_content "#{condition_1.precipitation}"
       expect(page).to have_button 'Edit'
       expect(page).to have_button 'Delete'
     end
@@ -124,19 +120,15 @@ describe 'as a admin' do
   describe 'visiting conditions/index' do
     xit 'can delete a condition' do
       condition_1 = Condition.create(cond_date: '8/9/2010', max_temperature: 96, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 5, mean_wind_speed: 3, precipitation: 0.2)
-      condition_2 = Condition.create(cond_date: '8/10/2010', max_temperature: 86, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 2, mean_wind_speed: 6, precipitation: 0.6)
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit conditions_path
 
-      within "#condition-#{condition_1.id}" do
-        click_button 'Delete'
-      end
+      click_button 'Delete'
 
       expect(current_path).to eq conditions_path
-      expect(page).to have_content "Date: #{condition_2.cond_date}"
       expect(page).to_not have_content "Date: #{condition_1.cond_date}"
       expect(page).to have_content "You have successfully deleted #{condition_1.cond_date} condition"
     end
