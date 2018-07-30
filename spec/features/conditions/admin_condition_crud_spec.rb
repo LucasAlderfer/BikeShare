@@ -118,7 +118,7 @@ describe 'as a admin' do
     end
   end
   describe 'visiting conditions/index' do
-    it 'can delete a condtion' do
+    it 'can delete a condition' do
       condition_1 = Condition.create(cond_date: '8/9/2010', max_temperature: 96, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 5, mean_wind_speed: 3, precipitation: 0.2)
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
 

@@ -71,7 +71,7 @@ describe Trip do
 
       expect(Trip.station_end_max).to eq('world')
     end
-    xit 'calculates Month by Month breakdown of number of rides with subtotals for each year' do
+    it 'calculates Month by Month breakdown of number of rides with subtotals for each year' do
       #TODO
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
       trip_2 = Trip.create!(duration:9, start_date:'8/2/2010', start_station_id: 2, end_date: '8/10/2010', end_station_id: 1, bike_id: 5, subscription_type: "Customer", zip_code: 22406)
@@ -86,8 +86,8 @@ describe Trip do
       trip_11 = Trip.create!(duration:10, start_date:'8/11/2010', start_station_id: 2, end_date: '8/11/2010', end_station_id: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
       trip_12 = Trip.create!(duration:5, start_date:'8/12/2010', start_station_id: 2, end_date: '8/11/2010', end_station_id: 2, bike_id: 6, subscription_type: "Subscriber", zip_code: 22201)
 
-      expect(Trip.number_of_rides_per_month).to eq({ '2010-01-01 00:00:00.000000000 +0000' => 1, '2010-02-01 00:00:00.000000000 +0000' => 1, '2010-03-01 00:00:00.000000000 +0000' => 1, '2010-04-01 00:00:00.000000000 +0000' => 1, '2010-05-01 00:00:00.000000000 +0000' => 1, '2010-06-01 00:00:00.000000000 +0000' => 1, '2010-07-01 00:00:00.000000000 +0000' => 1, '2010-08-01 00:00:00.000000000 +0000' => 1, '2010-09-01 00:00:00.000000000 +0000' => 1, '2010-10-01 00:00:00.000000000 +0000' => 1, '2010-11-01 00:00:00.000000000 +0000' => 1, '2010-12-01 00:00:00.000000000 +0000' => 1 })
-      expect(Trip.total_trips_per_year).to eq({ 2010 => 12 })
+      expect(Trip.number_of_rides_per_month).to eq({ Time.new(2010,01,01,0,0,0,0) => 1, Time.new(2010,02,01,0,0,0,0) => 1, Time.new(2010,03,01,0,0,0,0) => 1, Time.new(2010,04,01,0,0,0,0) => 1, Time.new(2010,05,01,0,0,0,0) => 1, Time.new(2010,06,01,0,0,0,0) => 1, Time.new(2010,07,01,0,0,0,0) => 1, Time.new(2010,8,01,0,0,0,0) => 1, Time.new(2010,9,01,0,0,0,0) => 1, Time.new(2010,10,01,0,0,0,0) => 1, Time.new(2010,11,01,0,0,0,0) => 1, Time.new(2010,12,01,0,0,0,0) => 1 })
+      expect(Trip.total_trips_per_year).to eq({Time.new(2010,01,01,0,0,0,0) => 12})
     end
     it 'calculates the Most ridden bike with total number of rides for that bike' do
       trip_1 = Trip.create!(duration:8, start_date:'8/1/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 6, subscription_type: "Subscriber", zip_code: 22207)
