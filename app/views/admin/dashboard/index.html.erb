@@ -3,7 +3,15 @@
   <%= link_to "Edit Profile", edit_user_path(current_user) %>
 <% end %>
 
+<p>Number of orders that are:</p>
+<ul>
+  <li>Ordered: <%= @ordered %></li>
+  <li>Completed: <%= @completed %></li>
+  <li>Paid: <%= @paid %></li>
+  <li>Cancelled: <%= @cancelled %></li>
+</ul>
 
-<% current_user.orders.each do |order| %>
-  <p><%= link_to "Order #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
+
+<% @orders.each do |order| %>
+  <p><%= link_to "Order Number: #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
 <% end %>

@@ -21,9 +21,9 @@ describe 'An admin visits admin dashboard' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit admin_dashboard_path
-
-    find_link("Order Number: #{order_1.id}").visible?
-    find_link("Order Number: #{order_2.id}").visible?
+    
+    find_link("Order Number: #{order_1.id} - #{order_1.status}").visible?
+    find_link("Order Number: #{order_2.id} - #{order_2.status}").visible?
     expect(page).to have_content("Ordered: 1")
     expect(page).to have_content("Paid: 1")
     expect(page).to have_content("Cancelled: 1")
