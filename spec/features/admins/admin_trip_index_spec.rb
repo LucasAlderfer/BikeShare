@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin' do
   describe 'visits trip index page' do
-    xit 'sees edit and delete buttons next to each trip' do
+    it 'sees edit and delete buttons next to each trip' do
       station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
       station_2 = Station.create(name: 'asdf', dock_count:2, city:'Denver', installation_date:'8/7/2010')
       admin = User.create!(username:'bob', password:'hello', role: 1)

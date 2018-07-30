@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'as a admin' do
   describe 'visiting conditons/index' do
-    xit 'can see edit and delete buttons for each condition' do
+    it 'can see edit and delete buttons for each condition' do
       condition_1 = Condition.create(cond_date: '8/9/2010', max_temperature: 96, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 5, mean_wind_speed: 3, precipitation: 0.2)
       condition_2 = Condition.create(cond_date: '8/10/2010', max_temperature: 86, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 2, mean_wind_speed: 6, precipitation: 0.6)
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
@@ -118,7 +118,7 @@ describe 'as a admin' do
     end
   end
   describe 'visiting conditions/index' do
-    xit 'can delete a condition' do
+    it 'can delete a condition' do
       condition_1 = Condition.create(cond_date: '8/9/2010', max_temperature: 96, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 5, mean_wind_speed: 3, precipitation: 0.2)
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
 

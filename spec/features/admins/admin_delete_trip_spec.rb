@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Admin' do
-  xit 'can delete a trip from the index page' do
+  it 'can delete a trip from the index page' do
     station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
     station_2 = Station.create(name: 'asdf', dock_count:2, city:'Denver', installation_date:'8/7/2010')
     admin = User.create!(username:'bob', password:'hello', role: 1)

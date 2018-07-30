@@ -2,7 +2,7 @@ require 'rails_helper'
 
 context 'as an admin' do
   describe 'visiting stations/show' do
-    xit 'can see edit and delete buttons for that station' do
+    it 'can see edit and delete buttons for that station' do
       station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
       trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 1, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
@@ -54,7 +54,7 @@ context 'as an admin' do
   end
 
   describe 'visiting stations/show' do
-    xit 'can create a new station' do
+    it 'can create a new station' do
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -80,7 +80,7 @@ context 'as an admin' do
     end
   end
   describe 'visiting stations/edit' do
-    xit 'can edit a station' do
+    it 'can edit a station' do
       admin = User.create!(username:'dhdf', password:'hello', role: 1)
       station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
 
