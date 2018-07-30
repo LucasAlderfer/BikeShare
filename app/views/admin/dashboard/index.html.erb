@@ -24,7 +24,11 @@
 
 <% @orders.each do |order| %>
     <p><%= link_to "Order Number: #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
-    <% if order.status == 'ordered' || order.status == 'paid' %>
-      <%= link_to 'Cancel', admin_order_path(current_user, order, status: 'cancelled'), method: :patch %>
+    <% if order.status == 'ordered' %>
+      <%= link_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch %>
+      <%= link_to 'Mark as Paid', admin_order_path(order, status: 'paid'), method: :patch %>
+    <% elsif order.status == 'paid'%>
+      <%= link_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch %>
+      <%= link_to 'Mark as Completed', admin_order_path(order, status: 'completed'), method: :patch %>
     <% end %>
 <% end %>
