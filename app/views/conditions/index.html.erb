@@ -9,6 +9,7 @@
 </div>
 <table>
   <tr>
+    <th>Id Number</th>
     <th>Date</th>
     <th>Max Temperature</th>
     <th>Mean Temperature</th>
@@ -23,6 +24,7 @@
   </tr>
   <% @conditions.each do |condition| %>
     <tr>
+      <td><%= link_to condition.id, condition_path(condition) %></td>
       <td><%= condition.cond_date %></td>
       <td><%= condition.max_temperature %></td>
       <td><%= condition.mean_temperature %></td>
