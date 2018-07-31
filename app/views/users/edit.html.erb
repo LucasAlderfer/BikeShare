@@ -1,17 +1,19 @@
 <h1 class='index-title'>Update User Information</h1>
 
-<div class='form'>
-<%= form_for @user do |f| %>
-    <div>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    </div>
-    <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    </div>
-    <div>
-    <%= f.submit "Update User" %>
-    </div>
+<% if current_user == @user %>
+  <div class='form'>
+  <%= form_for @user do |f| %>
+      <div>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+      </div>
+      <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      </div>
+      <div>
+      <%= f.submit "Update User" %>
+      </div>
+  <% end %>
+  </div>
 <% end %>
-</div>
