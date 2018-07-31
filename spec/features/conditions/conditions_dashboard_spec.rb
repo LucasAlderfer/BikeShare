@@ -14,12 +14,12 @@ describe 'User' do
     station_1 = Station.create(name: 'hello', dock_count: 2, city:'Denver', installation_date:'8/7/2010')
     station_2 = Station.create(name: 'world', dock_count: 3, city:'Chicago', installation_date:'8/7/2010')
 
-    trip_1 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
-    trip_2 = Trip.create!(duration:8, start_date:'8/9/2010', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
-    trip_3 = Trip.create!(duration:8, start_date:'8/10/2010', start_station_id: 1, end_date: '8/10/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
-    trip_4 = Trip.create!(duration:8, start_date:'8/11/2010', start_station_id: 1, end_date: '8/11/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
-    trip_5 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
-    trip_6 = Trip.create!(duration:8, start_date:'8/12/2010', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+    trip_1 = Trip.create!(duration:8, start_date:'8/9/2010 00:00', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+    trip_2 = Trip.create!(duration:8, start_date:'8/9/2010 00:00', start_station_id: 1, end_date: '8/9/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+    trip_3 = Trip.create!(duration:8, start_date:'8/10/2010 00:00', start_station_id: 1, end_date: '8/10/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+    trip_4 = Trip.create!(duration:8, start_date:'8/11/2010 00:00', start_station_id: 1, end_date: '8/11/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+    trip_5 = Trip.create!(duration:8, start_date:'8/12/2010 00:00', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
+    trip_6 = Trip.create!(duration:8, start_date:'8/12/2010 00:00', start_station_id: 1, end_date: '8/12/2010', end_station_id: 2, bike_id: 4, subscription_type: "Subscriber", zip_code: 22207)
 
 
     visit conditions_dashboard_path

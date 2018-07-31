@@ -97,11 +97,11 @@ class Trip < ApplicationRecord
   end
 
   def self.highest_rides_per_temp(range)
-    where(start_date: Condition.where(max_temperature: (range)).pluck(:cond_date)).group(:start_date).count.values.max
+    where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.max
   end
 
   def self.average_rides_per_temp(range)
-    x = Trip.where(start_date: Condition.where(max_temperature: (range)).pluck(:cond_date)).group(:start_date).count.values
+    x = Trip.where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values
     unless x.count == 0
       (x.sum.to_f / x.count).round(2)
     else
@@ -110,15 +110,15 @@ class Trip < ApplicationRecord
   end
 
   def self.lowest_rides_per_temp(range)
-    where(start_date: Condition.where(max_temperature: (range)).pluck(:cond_date)).group(:start_date).count.values.min
+    where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.min
   end
 
   def self.highest_rides_per_precipitation(range)
-    where(start_date: Condition.where(precipitation: (range)).pluck(:cond_date)).group(:start_date).count.values.max
+    where(start_date: Condition.where(precipitation: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.max
   end
 
   def self.average_rides_per_precipitation(range)
-    x = Trip.where(start_date: Condition.where(precipitation: (range)).pluck(:cond_date)).group(:start_date).count.values
+    x = Trip.where(start_date: Condition.where(precipitation: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values
     unless x.count == 0
       (x.sum.to_f / x.count).round(2)
     else
@@ -127,15 +127,15 @@ class Trip < ApplicationRecord
   end
 
   def self.lowest_rides_per_precipitation(range)
-    where(start_date: Condition.where(precipitation: (range)).pluck(:cond_date)).group(:start_date).count.values.min
+    where(start_date: Condition.where(precipitation: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.min
   end
 
   def self.highest_rides_per_wind_speed(range)
-    where(start_date: Condition.where(mean_wind_speed: (range)).pluck(:cond_date)).group(:start_date).count.values.max
+    where(start_date: Condition.where(mean_wind_speed: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.max
   end
 
   def self.average_rides_per_wind_speed(range)
-    x = Trip.where(start_date: Condition.where(mean_wind_speed: (range)).pluck(:cond_date)).group(:start_date).count.values
+    x = Trip.where(start_date: Condition.where(mean_wind_speed: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values
     unless x.count == 0
       (x.sum.to_f / x.count).round(2)
     else
@@ -144,15 +144,15 @@ class Trip < ApplicationRecord
   end
 
   def self.lowest_rides_per_wind_speed(range)
-    where(start_date: Condition.where(mean_wind_speed: (range)).pluck(:cond_date)).group(:start_date).count.values.min
+    where(start_date: Condition.where(mean_wind_speed: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.min
   end
 
   def self.highest_rides_per_mean_visibility(range)
-    where(start_date: Condition.where(mean_visibility: (range)).pluck(:cond_date)).group(:start_date).count.values.max
+    where(start_date: Condition.where(mean_visibility: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.max
   end
 
   def self.average_rides_per_mean_visibility(range)
-    x = Trip.where(start_date: Condition.where(mean_visibility: (range)).pluck(:cond_date)).group(:start_date).count.values
+    x = Trip.where(start_date: Condition.where(mean_visibility: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values
     unless x.count == 0
       (x.sum.to_f / x.count).round(2)
     else
@@ -161,7 +161,7 @@ class Trip < ApplicationRecord
   end
 
   def self.lowest_rides_per_mean_visibility(range)
-    where(start_date: Condition.where(mean_visibility: (range)).pluck(:cond_date)).group(:start_date).count.values.min
+    where(start_date: Condition.where(mean_visibility: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.min
   end
 
 end
