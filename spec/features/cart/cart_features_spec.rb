@@ -56,5 +56,22 @@ describe 'A user visits bike shop' do
       expect(page).to_not have_content("Quantity: -5")
       expect(page).to have_content("Quantity: 1")
     end
+    it 'can use buttons to increase or decrease the quantity by 1' do
+      part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'http://placekitten/200/200')
+
+      visit '/bike-shop'
+
+      within "#accessory-#{part_1.id}" do
+        click_on 'Add to Cart'
+      end
+
+      visit cart_path
+
+      click_on("+")
+      expect(page).to have_content("Quantity: 2")
+
+      click_on("-")
+      expect(page).to have_content("Quantity: 1")
+    end
   end
 end

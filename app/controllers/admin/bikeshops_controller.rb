@@ -9,6 +9,9 @@ class Admin::BikeshopsController < ApplicationController
   end
 
   def create
+    if params[:accessory][:image] == ""
+      params[:accessory][:image] = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1/amazon-gettyimages-531317762-1497976177.jpg"
+    end
     @accessory = Accessory.create(accessory_params)
     if @accessory.save
       flash[:success] = "You have successfully created new accessory #{@accessory.title}"
