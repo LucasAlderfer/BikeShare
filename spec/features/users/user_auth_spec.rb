@@ -20,7 +20,7 @@ describe 'visiting /' do
 
       visit '/bike-shop'
       click_on "Add to Cart"
-      
+
       visit cart_path
 
       click_on 'Checkout'
@@ -29,7 +29,7 @@ describe 'visiting /' do
     end
     it 'cannot register as an admin' do
       visit login_path
-      click_on 'Create Account'
+      click_on 'Create New Account'
       expect(page).to_not have_content "Role:"
       visit admin_dashboard_path
       expect(page).to have_content "The page you were looking for doesn't exist"
