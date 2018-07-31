@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180729195557) do
     t.string "description"
     t.decimal "price"
     t.integer "status", default: 0
-    t.string "image", default: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1/amazon-gettyimages-531317762-1497976177.jpg"
+    t.string "image"
   end
 
   create_table "conditions", force: :cascade do |t|
