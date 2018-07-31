@@ -16,7 +16,11 @@ describe 'visiting /' do
       # expect(page).to have_link "Log In" commented out until nav is working
     end
     it 'cannot checkout without logging in' do
+      part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'http://placekitten/200/200')
 
+      visit '/bike-shop'
+      click_on "Add to Cart"
+      
       visit cart_path
 
       click_on 'Checkout'
