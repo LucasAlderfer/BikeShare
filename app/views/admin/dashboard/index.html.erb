@@ -14,10 +14,6 @@
 
 
 <p>Choose which orders to view:
-  <!-- <%= form_tag(admin_dashboard_path, method: :get) do %>
-    <%= select_tag(:status, options_for_select(['', 'all', 'ordered', 'completed', 'paid', 'cancelled'])) %>
-    <%= submit_tag 'Sort' %>
-  <% end %> -->
 
   <%= link_to "All", admin_dashboard_path %>
   <%= link_to "Ordered", admin_dashboard_path(status: 'ordered') %>
