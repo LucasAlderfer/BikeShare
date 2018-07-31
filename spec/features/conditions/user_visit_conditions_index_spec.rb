@@ -24,6 +24,7 @@ describe 'sees conditions index' do
 
       visit conditions_path
 
+      expect(page).to have_link(cond1.id)
       expect(page).to have_content(cond1.cond_date)
       expect(page).to have_content(cond1.mean_temperature)
       expect(page).to have_content(cond1.mean_humidity)

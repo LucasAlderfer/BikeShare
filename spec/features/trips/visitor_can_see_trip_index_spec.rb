@@ -11,6 +11,7 @@ describe 'as a visitor' do
 
       visit trips_path
 
+      expect(page).to have_link trip_1.id
       expect(page).to have_content trip_1.duration
       expect(page).to have_content trip_1.start_date
       expect(page).to have_content trip_1.start_station.name
@@ -19,6 +20,7 @@ describe 'as a visitor' do
       expect(page).to have_content trip_1.bike_id
       expect(page).to have_content trip_1.subscription_type
       expect(page).to have_content trip_1.zip_code
+      expect(page).to have_link trip_2.id
       expect(page).to have_content trip_2.duration
       expect(page).to have_content trip_2.start_date
       expect(page).to have_content trip_2.start_station.name
@@ -27,6 +29,7 @@ describe 'as a visitor' do
       expect(page).to have_content trip_2.bike_id
       expect(page).to have_content trip_2.subscription_type
       expect(page).to have_content trip_2.zip_code
+      expect(page).to have_link trip_3.id
       expect(page).to have_content trip_3.duration
       expect(page).to have_content trip_3.start_date
       expect(page).to have_content trip_3.start_station.name
