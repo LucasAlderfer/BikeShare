@@ -12,7 +12,7 @@ describe 'visiting accessory_path' do
 
       expect(page).to have_content "Title: #{accessory_1.title}"
       expect(page).to have_content "Description: #{accessory_1.description}"
-      expect(page).to have_content "Price: #{accessory_1.price}"
+      expect(page).to have_content "Price: $#{accessory_1.price}"
       expect(page).to have_css "img[src*='image.jpg']"
       expect(page).to have_button "Add to Cart"
     end

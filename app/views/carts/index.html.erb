@@ -7,6 +7,8 @@
       <p>Quantity: <%= @cart.accessory_quantity(item.id) %></p>
 
       <p>Enter a new quantity:
+        <%= button_to "+", cart_path(id: item.id), method: :patch, params: {new_quantity: (@cart.accessory_quantity(item.id) + 1).to_s} %>
+        <%= button_to "-", cart_path(id: item.id), method: :patch, params: {new_quantity: (@cart.accessory_quantity(item.id) - 1).to_s} %>
         <%= form_tag(cart_path(id: item.id), method: "patch") do %>
           <%= label_tag "Change Quantity:" %>
           <%= number_field_tag :new_quantity %>

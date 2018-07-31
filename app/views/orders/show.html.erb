@@ -11,9 +11,9 @@
 <p>City/State/Zip: <%= @order.city %>, <%= @order.state %> <%= @order.zip %></p>
 
 <% @order.order_accessories.each do |ord_acc| %>
-  <%= link_to ord_acc.accessory.title, accessory_path(ord_acc.accessory) %>
-  Quantity: <%= ord_acc.quantity %>
-  Subtotal: <%= ord_acc.subtotal %><br>
+  <p><%= link_to ord_acc.accessory.title, accessory_path(ord_acc.accessory) %></p>
+  <p>Quantity: <%= ord_acc.quantity %></p>
+  <p>Subtotal: <%= number_to_currency(ord_acc.subtotal) %></p><br>
 <% end %>
 
-<p>Total: <%= @order.total %></p>
+<p>Total: <%= number_to_currency(@order.total) %></p>

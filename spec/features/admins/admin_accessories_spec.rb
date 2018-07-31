@@ -77,5 +77,22 @@ describe 'Admin' do
       expect(page).to have_content("Description: dsfkjhds")
       expect(page).to have_css("img[src*='http://placekitten.com/200/200']")
     end
+    it 'can create a new accessory without an image' do
+      admin = User.create(username: "sadf", password: "sadfkj", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit new_admin_bikeshop_path
+
+      fill_in :accessory_title, with: "sdf"
+      fill_in :accessory_price, with: 45.23
+      fill_in :accessory_description, with: "dsfkjhds"
+      fill_in :accessory_image, with: ""
+      click_on("Create Accessory")
+      expect(current_path).to eq('/admin/bike-shop')
+      expect(page).to have_content("You have successfully created new accessory sdf")
+      expect(page).to have_content("$45.23")
+      expect(page).to have_content("dsfkjhds")
+    end
   end
 end
