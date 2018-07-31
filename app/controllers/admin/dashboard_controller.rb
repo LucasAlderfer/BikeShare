@@ -1,7 +1,7 @@
 class Admin::DashboardController < Admin::BaseController
 
   def index
-    if (params[:status])
+    if (params[:status]) #!= 'all') && (params[:status] != '')
       @orders = Order.where(status: params[:status])
     else
       @orders = Order.all

@@ -9,7 +9,7 @@ describe 'visitor can create account' do
     click_on 'Login'
 
     expect(current_path).to eq('/login')
-    click_on 'Create Account'
+    click_on 'Create New Account'
 
     fill_in :user_username, with: username
     fill_in :user_password, with: password

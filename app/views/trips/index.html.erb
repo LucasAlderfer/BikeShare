@@ -1,8 +1,12 @@
-<h1 class='index-title'>Welcome to the Trips Index!
-<% if current_admin? %>
-  <%= button_to "Create a New Trip", new_admin_trip_path, method: :get %>
-<% end %></h1>
-<%= will_paginate @trips %>
+<div class='index-title'>
+  <h1>Welcome to the Trips Index!
+  <% if current_admin? %>
+    <%= button_to "Create a New Trip", new_admin_trip_path, method: :get %>
+  <% end %></h1>
+  <div class='digg_pagination'>
+    <p><%= will_paginate @trips %></p>
+  </div><br>
+</div>
 <table>
   <tr>
     <th>Duration</th>

@@ -1,3 +1,6 @@
+<div class='dashboard-body'>
+
+<h1>Welcome to the Conditions Dashboard!</h1>
 
 <% @temps.each do |temp| %>
   <p>Highest number of rides during max temp of <%= temp %>: <%= @trips.highest_rides_per_temp(temp) %></p>
@@ -22,3 +25,5 @@
   <p>Average number of rides during mean visibility <%= visibility %>: <%= @trips.average_rides_per_mean_visibility(visibility) %></p>
   <p>Lowest number of rides during mean visibility <%= visibility %>: <%= @trips.lowest_rides_per_mean_visibility(visibility) %></p>
 <% end %>
+
+</div>

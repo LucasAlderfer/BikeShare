@@ -16,6 +16,10 @@ describe 'visiting /' do
       # expect(page).to have_link "Log In" commented out until nav is working
     end
     it 'cannot checkout without logging in' do
+      part_1 = Accessory.create(title: 'thing1', description: 'kjhs', price: 4, status: 0, image: 'http://placekitten/200/200')
+
+      visit '/bike-shop'
+      click_on "Add to Cart"
 
       visit cart_path
 
@@ -25,7 +29,7 @@ describe 'visiting /' do
     end
     it 'cannot register as an admin' do
       visit login_path
-      click_on 'Create Account'
+      click_on 'Create New Account'
       expect(page).to_not have_content "Role:"
       visit admin_dashboard_path
       expect(page).to have_content "The page you were looking for doesn't exist"

@@ -1,3 +1,7 @@
+<div class='dashboard-body'>
+
+<h1>Welcome to the Trips Dashboard!</h1>
+
 <p>Average Duration: <%= @trips.average_duration %></p>
 <p>Longest Ride: <%= @trips.longest_duration %></p>
 <p>Shortest Ride: <%= @trips.shortest_duration %></p>
@@ -26,3 +30,5 @@
 <% @trips.total_trips_per_year.each do |date, trips| %>
   <p><%= date.year %> Ride Total: <%= trips %></p>
 <% end %>
+
+</div>

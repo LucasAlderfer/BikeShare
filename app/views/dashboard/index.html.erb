@@ -1,11 +1,13 @@
+<h1 class='index-title'>Welcome to Your Dashboard</h1>
 
-
-<% if current_user %>
-  <%= link_to "Edit Profile", edit_user_path(current_user) %>
-<% end %>
-
-<% if current_user.orders %>
-  <% current_user.orders.each do |order| %>
-    <p><%= link_to "Order #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
+<div class='cart'>
+  <% if current_user %>
+    <%= link_to "Edit Profile", edit_user_path(current_user) %>
   <% end %>
-<% end %>
+
+  <% if current_user.orders %>
+    <% current_user.orders.each do |order| %>
+      <p><%= link_to "Order #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
+    <% end %>
+  <% end %>
+</div>

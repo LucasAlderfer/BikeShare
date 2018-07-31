@@ -1,6 +1,12 @@
+<div class='dashboard-body'>
+
+<h1>Welcome to the Stations Dashboard!</h1>
+
 <p>Total station count: <%= @stations_total %></p>
 <p>Average number of docks: <%= @average_docks %></p>
 <p>Max number of Docks: <%= @most_docks.dock_count%> <%= @most_docks.name%></p>
 <p>Min number of Docks: <%= @least_docks.dock_count%> <%= @least_docks.name%></p>
 <p>Newest Station: <%= @youngest_stat.name %>, installed on: <%= @youngest_stat.installation_date%></p>
 <p>Oldest Station: <%= @oldest_stat.name %>, installed on: <%= @oldest_stat.installation_date%></p>
+
+</div>

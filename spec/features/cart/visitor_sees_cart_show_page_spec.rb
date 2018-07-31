@@ -37,7 +37,7 @@ describe 'visitor sees cart show page' do
 
     visit '/login'
 
-    click_on 'Create Account'
+    click_on 'Create New Account'
 
     fill_in :user_username, with: username
     fill_in :user_password, with: password

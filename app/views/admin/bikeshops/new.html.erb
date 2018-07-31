@@ -1,18 +1,29 @@
+<h1 class='index-title'>Create Accessory</h1>
+
+<div class='form'>
 <%= form_for [:admin, @accessory], url: admin_bikeshops_path, method: :post do |f| %>
+  <div>
   <%= f.label :title %>
   <%= f.text_field :title %>
-
+  </div>
+  <div>
   <%= f.label :description %>
   <%= f.text_field :description %>
-
+  </div>
+  <div>
   <%= f.label :price %>
   <%= f.number_field :price, step: 0.01 %>
-
+  </div>
+  <div>
   <%= f.label :image %>
   <%= f.text_field :image %>
-
+  </div>
+  <div>
   <%= f.label :status %>
   <%= f.select :status, ['Active', 'Retired'] %>
-
+  </div>
+  <div>
   <%= f.submit %>
+  </div>
 <% end %>
+</div>
