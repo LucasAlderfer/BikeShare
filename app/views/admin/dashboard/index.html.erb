@@ -1,8 +1,6 @@
+<div class='dashboard-body'>
 
-<% if current_user %>
-  <%= link_to "Edit Profile", edit_user_path(current_user) %>
-<% end %>
-
+<h1>Welcome to the Admin Dashboard!</h1>
 
 <p>Number of orders that are:</p>
 <ul>
@@ -28,12 +26,14 @@
   <%= link_to "Cancelled", admin_dashboard_path(status: 'cancelled') %></p> -->
 
 <% @orders.each do |order| %>
-    <p><%= link_to "Order Number: #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
+    <p><%= link_to "Order Number: #{order.id} - #{order.status}", user_order_path(current_user, order) %>
     <% if order.status == 'ordered' %>
-      <%= link_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch %>
-      <%= link_to 'Mark as Paid', admin_order_path(order, status: 'paid'), method: :patch %>
+      <%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch %>
+      <%= button_to 'Mark as Paid', admin_order_path(order, status: 'paid'), method: :patch %>
     <% elsif order.status == 'paid'%>
-      <%= link_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch %>
-      <%= link_to 'Mark as Completed', admin_order_path(order, status: 'completed'), method: :patch %>
-    <% end %>
+      <%= button_to 'Cancel', admin_order_path(order, status: 'cancelled'), method: :patch %>
+      <%= button_to 'Mark as Completed', admin_order_path(order, status: 'completed'), method: :patch %>
+    <% end %></p><br>
 <% end %>
+
+</div>
