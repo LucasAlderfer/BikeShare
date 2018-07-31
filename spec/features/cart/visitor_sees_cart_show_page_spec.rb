@@ -75,7 +75,7 @@ describe 'visitor sees cart show page' do
     expect(page).to have_content("Successfully removed #{part_1.title} from your cart")
 
     within ".remove" do
-      page.has_selector?("#{part_1.title}")
+      expect(page).to have_link("#{part_1.title}")
     end
 
     within ".cart" do
