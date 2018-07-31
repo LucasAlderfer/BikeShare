@@ -1,0 +1,11 @@
+.shop {
+  margin-left: 5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+.shop-item {
+  overflow-wrap: normal;
+  padding: 10px;
+}

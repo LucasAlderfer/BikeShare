@@ -2,9 +2,9 @@
   <%= button_to 'Create a New Accessory', new_admin_bikeshop_path, method: :get %>
 </h1>
 
-
+<div class='shop'>
 <% @accessories.each do |accessory| %>
-  <div id="accessory-<%=accessory.id%>">
+  <div class='shop-item' id="accessory-<%=accessory.id%>">
     <p>Title: <%= accessory.title %></p>
     <p>Description: <%= accessory.description %></p>
     <p>Price: $<%= accessory.price %></p>
@@ -21,3 +21,4 @@
     <% end %>
   </div>
 <% end %>
+</div>
