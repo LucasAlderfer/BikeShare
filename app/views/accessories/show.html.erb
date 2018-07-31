@@ -1,7 +1,7 @@
 <h1>Welcome to the <%= @accessory.title %> page.</h1>
 
 <p>Title: <%= @accessory.title %></p>
-<%= image_tag(@accessory.image) %>
+<img src="<%=@accessory.image%>" class="accessory-show-image">
 <p>Description: <%= @accessory.description %></p>
 <p>Price: <%= number_to_currency(@accessory.price) %></p>
 <% if @accessory.status == 'Active' %>
