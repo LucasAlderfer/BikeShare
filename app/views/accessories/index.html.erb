@@ -1,6 +1,8 @@
 <h1 class='index-title'>Welcome to the Bike Shop!</h1>
+
+<div class='shop'>
 <% @accessories.each do |accessory| %>
-  <div id='accessory-<%= accessory.id %>'>
+  <div class='shop-item' id='accessory-<%= accessory.id %>'>
     <p><%=link_to accessory.title, accessory_path(accessory) %></p>
     <p><%= number_to_currency(accessory.price) %></p>
     <%= image_tag(accessory.image, size: '200x200') %>
@@ -11,3 +13,4 @@
     <% end %><br>
   </div>
 <% end %>
+</div
