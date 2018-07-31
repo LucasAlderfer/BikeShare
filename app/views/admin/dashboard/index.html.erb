@@ -15,12 +15,17 @@
 <%= link_to "Accessories", '/admin/bike-shop' %>
 
 
-<p>Choose which orders to view:    
-  <%= link_to "All", admin_dashboard_path %>
+<p>Choose which orders to view:
+  <%= form_tag(admin_dashboard_path, method: :get) do %>
+    <%= select_tag(:status, options_for_select(['', 'all', 'ordered', 'completed', 'paid', 'cancelled'])) %>
+    <%= submit_tag 'Sort' %>
+  <% end %>
+
+  <!-- <%= link_to "All", admin_dashboard_path %>
   <%= link_to "Ordered", admin_dashboard_path(status: 'ordered') %>
   <%= link_to "Completed", admin_dashboard_path(status: 'completed') %>
   <%= link_to "Paid", admin_dashboard_path(status: 'paid') %>
-  <%= link_to "Cancelled", admin_dashboard_path(status: 'cancelled') %></p>
+  <%= link_to "Cancelled", admin_dashboard_path(status: 'cancelled') %></p> -->
 
 <% @orders.each do |order| %>
     <p><%= link_to "Order Number: #{order.id} - #{order.status}", user_order_path(current_user, order) %></p>
