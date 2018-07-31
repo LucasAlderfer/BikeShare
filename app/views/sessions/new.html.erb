@@ -1,11 +1,18 @@
-<%= form_tag login_path, class: "login-form" do %>
+<h1 class='index-title'><%= button_to "Create New Account", new_user_path, method: :get %><br>
 
-<%= label_tag :username %>
-<%= text_field_tag :username %>
-<%= label_tag :password %>
-<%= password_field_tag :password %>
-<%= submit_tag "Login" %>
+or Login here</h1>
 
-<% end %>
-
-<%= button_to "Create Account", new_user_path, method: :get %>
+<div class='form'>
+  <%= form_tag login_path, class: "login-form" do %>
+    <div>
+      <%= label_tag :username %>
+      <%= text_field_tag :username %>
+    </div>
+    <div>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div>
+    <div>
+      <%= submit_tag "Login" %>
+    </div>
+  <% end %>

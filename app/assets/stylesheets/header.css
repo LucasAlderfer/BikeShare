@@ -87,3 +87,11 @@ nav a:hover {
   min-width: 120px;
   padding-left: 10px;
 }
+
+.dashboard-body {
+  margin-left: 5%;
+}
+
+.cart {
+  margin-left: 5%;
+}
