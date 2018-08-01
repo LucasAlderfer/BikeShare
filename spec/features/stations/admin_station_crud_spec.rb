@@ -78,6 +78,23 @@ context 'as an admin' do
       expect(page).to have_content "Installation Date: 2010-08-07"
       expect(page).to have_content "You have successfully created hello station"
     end
+    it 'cannot create an invalid station' do
+      admin = User.create!(username:'dhdf', password:'hello', role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit new_admin_station_path
+
+      station = Station.new(name: "hello", dock_count: 2, city: "Denver", installation_date: "8/7/2010")
+
+      trip_1 = Trip.create(duration: 45, zip_code: 12345, start_station_id: 1, end_station_id: 1, start_date: "8/7/2010", end_date: "8/8/2010", bike_id: 123, subscription_type: "asdf")
+
+      fill_in :station_name, with: station.name
+
+      click_on "Create Station"
+
+      expect(page).to have_content("Station was not properly created")
+    end
   end
   describe 'visiting stations/edit' do
     it 'can edit a station' do
@@ -101,6 +118,23 @@ context 'as an admin' do
       expect(page).to have_content "Kansas"
       expect(page).to have_content "2018-09-06"
       expect(page).to have_content "You have successfully updated goodbye station"
+    end
+    it 'cannot edit a station with invalid data' do
+      admin = User.create!(username:'dhdf', password:'hello', role: 1)
+      station_1 = Station.create(name: 'hello', dock_count:2, city:'Denver', installation_date:'8/7/2010')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit edit_admin_station_path(station_1.name)
+
+      fill_in :station_name, with: 'goodbye'
+      fill_in :station_dock_count, with: 3
+      fill_in :station_city, with: 'Kansas'
+      fill_in :station_installation_date, with: 'not a date'
+
+      click_on "Update Station"
+
+      expect(page).to have_content("Station was not properly updated")
     end
   end
   describe 'visiting stations/index' do

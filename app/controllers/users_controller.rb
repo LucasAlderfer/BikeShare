@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
+      flash[:notice] = "Unable to create account."
       render :new
     end
   end
@@ -24,8 +25,6 @@ class UsersController < ApplicationController
       @current_user = @user
       flash[:success] = "You successfully updated your account!"
       redirect_to dashboard_path
-    else
-      render :edit
     end
   end
 
