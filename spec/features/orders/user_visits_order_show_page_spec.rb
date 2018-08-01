@@ -5,8 +5,9 @@ describe 'User visits order show page' do
     user = User.create(username: "asdf", password: "asdf")
     acc1 = Accessory.create(title: 'bike thing', description: 'does things', price: 2, status: 'Active', image: 'pic.jpg')
     acc2 = Accessory.create(title: 'other thing', description: 'does others', price: 4, status: 'Active', image: 'img.jpg')
-    order_1 = user.orders.create(status: 1)
-    order_2 = user.orders.create(status: 3)
+    order_1 = user.orders.create(status: 1, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+    order_2 = user.orders.create(status: 3, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+
     order_1.order_accessories.create(quantity: 2, accessory_id: acc1.id)
     order_1.order_accessories.create(quantity: 1, accessory_id: acc2.id)
 

@@ -14,7 +14,7 @@ describe OrderAccessory do
     it 'should give the subtotal of the order_accessory' do
       user = User.create(username: "asdf", password: "asdf")
       acc1 = Accessory.create(title: 'bike thing', description: 'does things', price: 2, status: 'Active', image: 'pic.jpg')
-      order_1 = user.orders.create(status: 2)
+      order_1 = user.orders.create(status: 1, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
       ord_acc = order_1.order_accessories.create(quantity: 2, accessory_id: acc1.id)
 
       expected = 4
