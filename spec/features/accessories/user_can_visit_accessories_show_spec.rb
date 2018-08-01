@@ -1,5 +1,3 @@
-# adding this comment to hopefully make heroku realize that it IS NOT UP TO DATE
-
 require 'rails_helper'
 
 describe 'visiting accessory_path' do
