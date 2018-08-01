@@ -50,10 +50,12 @@ end
 @random = Random.new
 CSV.foreach('./db/csv/trip.csv', headers: true, header_converters: :symbol) do |trip|
   if @random.rand(50) == 26
+    filtered_start = trip[:start_date].split(" ").first
+    filtered_end = trip[:end_date].split(" ").first
     Trip.create(duration: trip[:duration],
-                start_date: DateTime.strptime(trip[:start_date], '%m/%d/%Y %H:%M'),
+                start_date: DateTime.strptime(filtered_start, '%m/%d/%Y'),
                 start_station_id: trip[:start_station_id].to_i,
-                end_date: DateTime.strptime(trip[:end_date], '%m/%d/%Y %H:%M'),
+                end_date: DateTime.strptime(filtered_end, '%m/%d/%Y'),
                 end_station_id: trip[:end_station_id].to_i,
                 bike_id: trip[:bike_id],
                 subscription_type: trip[:subscription_type],
