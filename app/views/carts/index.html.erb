@@ -2,25 +2,23 @@
   <% @cart_items.each do |item| %>
     <div id="accessory-<%= item.id %>" >
       <%= image_tag(item.image, size: "50x50") %>
-      <p>Title:<%= item.title %></p>
-      <p>Price:<%= item.price %></p>
+      <p>Title: <%= item.title %></p>
+      <p>Price: <%= number_to_currency(item.price) %></p>
       <p>Quantity: <%= @cart.accessory_quantity(item.id) %></p>
-
-      <p>Enter a new quantity:
-        <%= button_to "+", cart_path(id: item.id), method: :patch, params: {new_quantity: (@cart.accessory_quantity(item.id) + 1).to_s} %>
-        <%= button_to "-", cart_path(id: item.id), method: :patch, params: {new_quantity: (@cart.accessory_quantity(item.id) - 1).to_s} %>
-        <%= form_tag(cart_path(id: item.id), method: "patch") do %>
-          <%= label_tag "Change Quantity:" %>
-          <%= number_field_tag :new_quantity %>
-          <%= submit_tag "Update Quantity"%>
-        <% end %>
+      <p>Change Quantity:</p>
+      <%= button_to "+", cart_path(id: item.id), method: :patch, params: {new_quantity: (@cart.accessory_quantity(item.id) + 1).to_s} %>
+      <%= button_to "-", cart_path(id: item.id), method: :patch, params: {new_quantity: (@cart.accessory_quantity(item.id) - 1).to_s} %>
+      <%= form_tag(cart_path(id: item.id), method: "patch") do %>
+        <%= number_field_tag :new_quantity %>
+        <%= submit_tag "Update Quantity"%>
+      <% end %>
       </p>
 
-      <p>Subtotal: <%= @cart.subtotal(item.id) %></p>
+      <p>Subtotal: <%= number_to_currency(@cart.subtotal(item.id)) %></p>
       <%= link_to "Remove", cart_path(id: item.id), method: 'delete' %><br><br>
     </div>
   <% end %>
-  <p>Total: <%= @cart.total %></p>
+  <p>Total: <%= number_to_currency(@cart.total) %></p>
   <% if !@cart.contents.empty? %>
     <% if current_user %>
       <p><%= button_to 'Checkout', new_user_order_path(current_user), method: :get %></p>
