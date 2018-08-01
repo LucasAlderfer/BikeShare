@@ -21,6 +21,5 @@
 /coverage
 /db/csv
 
-
 # Ignore application configuration
 /config/application.yml
