@@ -97,8 +97,17 @@ class Trip < ApplicationRecord
   end
 
   def self.highest_rides_per_temp(range)
-    where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values.max
+    # where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).order('count_all desc').count.first[1]
+    unless Condition.where(max_temperature: (range)).count == 0
+      where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).select('trips.start_date, count(id) as count').group(:start_date).order('count desc').first.count
+    else
+      0
+    end
   end
+
+  # where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).select('trips.*').group(:start_date).order('count_all desc').first
+  # where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).select('trips.start_date').group(:start_date).first
+  # where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).select('trips.start_date, count(id) as count').group(:start_date, :id).order('count').first.count
 
   def self.average_rides_per_temp(range)
     x = Trip.where(start_date: Condition.where(max_temperature: (range)).pluck("date_trunc('day', cond_date)")).group(:start_date).count.values
