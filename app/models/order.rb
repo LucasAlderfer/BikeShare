@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
-  validates_presence_of :status, :user_id
+  validates_presence_of :status, :user_id, :first_name, :last_name, :street, :city, :state, :zip
 
   belongs_to :user
   has_many :order_accessories

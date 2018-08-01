@@ -6,7 +6,7 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def create
-    @trip = Trip.create!(trip_params)
+    @trip = Trip.create(trip_params)
     if @trip.save
       flash[:success] = "You have successfully created a trip starting on #{@trip.start_date}"
       redirect_to trip_path(@trip)
@@ -22,7 +22,7 @@ class Admin::TripsController < Admin::BaseController
 
   def update
     @trip = Trip.find(params[:id])
-    @trip.update!(trip_params)
+    @trip.update(trip_params)
     if @trip.save
       flash[:success] = "You have successfully updated a trip starting on #{@trip.start_date}"
       redirect_to trip_path(@trip)

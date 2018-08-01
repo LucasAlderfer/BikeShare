@@ -70,5 +70,19 @@ describe 'visiting /' do
       # expect(current_path).to eq dashboard_path # I don't agree with this path as part of the test
       expect(page).to have_content "The page you were looking for doesn't exist"
     end
+    it 'can access its own private data' do
+      user = User.create(username: "asdf", password: "sdf")
+
+      visit login_path
+      fill_in :username, with: user.username
+      fill_in :password, with: user.password
+      click_button 'Login'
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit user_path(user)
+
+      expect(page).to have_content(user.username)
+    end
   end
 end

@@ -4,6 +4,12 @@ describe Order do
   context 'Validations' do
     it {should validate_presence_of(:status)}
     it {should validate_presence_of(:user_id)}
+    it {should validate_presence_of(:first_name)}
+    it {should validate_presence_of(:last_name)}
+    it {should validate_presence_of(:street)}
+    it {should validate_presence_of(:city)}
+    it {should validate_presence_of(:state)}
+    it {should validate_presence_of(:zip)}
   end
   context 'Relationships' do
     it {should belong_to(:user)}
@@ -15,7 +21,7 @@ describe Order do
       user = User.create(username: "asdf", password: "asdf")
       acc1 = Accessory.create(title: 'bike thing', description: 'does things', price: 2, status: 'Active', image: 'pic.jpg')
       acc2 = Accessory.create(title: 'other thing', description: 'does others', price: 4, status: 'Active', image: 'img.jpg')
-      order_1 = user.orders.create(status: 2)
+      order_1 = user.orders.create(status: 2, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
       order_1.order_accessories.create(quantity: 2, accessory_id: acc1.id)
       order_1.order_accessories.create(quantity: 1, accessory_id: acc2.id)
 
@@ -27,14 +33,14 @@ describe Order do
   context 'Class Methods' do
     it 'should give counts of orders by status' do
       user = User.create(username: "asdf", password: "asdf")
-      order_1 = user.orders.create(status: 0)
-      order_2 = user.orders.create(status: 0)
-      order_3 = user.orders.create(status: 1)
-      order_4 = user.orders.create(status: 2)
-      order_5 = user.orders.create(status: 2)
-      order_6 = user.orders.create(status: 2)
-      order_7 = user.orders.create(status: 3)
-      order_8 = user.orders.create(status: 3)
+      order_1 = user.orders.create(status: 0, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+      order_2 = user.orders.create(status: 0, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+      order_3 = user.orders.create(status: 1, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+      order_4 = user.orders.create(status: 2, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+      order_5 = user.orders.create(status: 2, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+      order_6 = user.orders.create(status: 2, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+      order_7 = user.orders.create(status: 3, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
+      order_8 = user.orders.create(status: 3, first_name: "adsf", last_name: "asdf", street: "asdflkj", city: "dfljk", state: "CO", zip: 37364)
 
       expect(Order.cnt_ordered).to eq(2)
       expect(Order.cnt_completed).to eq(1)

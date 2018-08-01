@@ -5,7 +5,9 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def create
-    params[:station][:installation_date] = Date.strptime(params[:station][:installation_date], '%m/%d/%Y')
+    if params[:station][:installation_date] != ""
+      params[:station][:installation_date] = Date.strptime(params[:station][:installation_date], '%m/%d/%Y')
+    end
     @station = Station.create(station_params)
     if @station.save
       flash[:success] = "You have successfully created #{@station.name} station"

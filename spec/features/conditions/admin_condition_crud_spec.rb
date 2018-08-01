@@ -84,6 +84,22 @@ describe 'as a admin' do
       expect(page).to have_content "Precipitation: 7"
       expect(page).to have_content "You have successfully created 2010-09-08 condition"
     end
+    it 'cannot create an invalid condition' do
+      admin = User.create!(username:'dhdf', password:'hello', role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit new_admin_condition_path
+
+      fill_in :condition_cond_date, with: '8/9/2010'
+      fill_in :condition_max_temperature, with: 90
+      fill_in :condition_mean_temperature, with: 93
+      fill_in :condition_min_temperature, with: 89
+
+      click_on "Create Condition"
+
+      expect(page).to have_content "Condition was not properly created"
+    end
   end
   describe 'visiting conditions/edit' do
     it 'can edit a condition' do
@@ -115,6 +131,28 @@ describe 'as a admin' do
       expect(page).to have_content "Mean Wind Speed: 6"
       expect(page).to have_content "Precipitation: 7"
       expect(page).to have_content "You have successfully updated condition for 2010-10-08"
+    end
+    it 'cannot edit a condition with invalid data' do
+      admin = User.create!(username:'dhdf', password:'hello', role: 1)
+      condition_1 = Condition.create(cond_date: '8/9/2010', max_temperature: 96, mean_temperature: 90, min_temperature: 87, mean_humidity: 23, mean_visibility: 5, mean_wind_speed: 3, precipitation: 0.2)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit edit_admin_condition_path(condition_1)
+
+      fill_in :condition_cond_date, with: "break please"
+      fill_in :condition_max_temperature, with: 90
+      fill_in :condition_mean_temperature, with: 93
+      fill_in :condition_min_temperature, with: 89
+      fill_in :condition_mean_humidity, with: 76
+      fill_in :condition_mean_visibility, with: 5
+      fill_in :condition_mean_wind_speed, with: 6
+      fill_in :condition_precipitation, with: 7
+
+
+      click_on "Update Condition"
+
+      expect(page).to have_content("Condition was not properly updated")
     end
   end
   describe 'visiting conditions/index' do

@@ -58,6 +58,32 @@ describe 'Admin' do
         expect(page).to have_css("img[src*='http://placekitten.com/150/150']")
       end
     end
+    it 'cannot update an accessory with invalid data' do
+      admin = User.create(username: "sadf", password: "sadfkj", role: 1)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      product_1 = Accessory.create(title: "asdf", price: 23, status: 0, description: "jkhfs", image: "http://placekitten.com/200/200")
+
+      visit admin_dashboard_path
+
+      click_link("Accessories")
+
+      within("#accessory-#{product_1.id}") do
+        click_on("Edit")
+      end
+
+      fill_in :accessory_title, with: "sdffsdkjh"
+      fill_in :accessory_description, with: "fskjdf"
+      fill_in :accessory_price, with: -5
+      fill_in :accessory_image, with: "http://placekitten.com/150/150"
+      select "Active", from: :accessory_status
+      click_on("Update Accessory")
+
+      expect(page).to have_content("Accessory was not properly updated")
+
+
+
+    end
     it 'can create a new accessory' do
       admin = User.create(username: "sadf", password: "sadfkj", role: 1)
 
@@ -93,6 +119,18 @@ describe 'Admin' do
       expect(page).to have_content("You have successfully created new accessory sdf")
       expect(page).to have_content("$45.23")
       expect(page).to have_content("dsfkjhds")
+    end
+    it 'cannot create a new accessory without required data' do
+      admin = User.create(username: "sadf", password: "sadfkj", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit new_admin_bikeshop_path
+
+      fill_in :accessory_title, with: "sdf"
+      fill_in :accessory_image, with: ""
+      click_on("Create Accessory")
+      expect(page).to have_content("Accessory was not properly created")
     end
   end
 end
